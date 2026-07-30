@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Логопедический комплекс — Овощи и Фрукты</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: linear-gradient(180deg, #e8f5e9 0%, #fff9c4 50%, #ffecb3 100%); min-height: 100vh; font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, sans-serif; padding: 15px; }
+        ._h1 { text-align: center; margin-bottom: 15px; }
+        ._h1 h1 { color: #2e7d32; font-size: 34px; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); margin-bottom: 5px; }
+        ._h1 ._s { color: #558b2f; font-size: 16px; }
+        ._tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 20px; padding: 0 10px; }
+        ._tb { padding: 14px 20px; border: 3px solid #81c784; background: white; border-radius: 30px; cursor: pointer; font-size: 15px; font-weight: bold; color: #33691e; transition: all 0.3s; font-family: inherit; white-space: nowrap; }
+        ._tb:hover { background: #c8e6c9; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        ._tb._a { background: #4caf50; color: white; border-color: #2e7d32; box-shadow: 0 4px 15px rgba(76,175,80,0.4); }
+        ._tc { display: none; max-width: 1000px; margin: 0 auto; animation: _fade 0.4s ease; }
+        ._tc._a { display: block; }
+        @keyframes _fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        ._gt { text-align: center; color: #33691e; font-size: 24px; margin-bottom: 10px; }
+        ._gd { text-align: center; color: #689f38; margin-bottom: 20px; font-size: 16px; }
+        ._sr { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+        ._sb { background: white; padding: 12px 22px; border-radius: 15px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); text-align: center; min-width: 100px; }
+        ._sb ._n { font-size: 36px; font-weight: bold; color: #4caf50; }
+        ._sb ._l { font-size: 13px; color: #888; }
+        ._btn { padding: 12px 25px; font-size: 16px; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.3s; font-family: inherit; box-shadow: 0 3px 10px rgba(0,0,0,0.12); }
+        ._btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+        ._btn:active { transform: translateY(0); }
+        ._btn._g { background: #4caf50; color: white; }
+        ._btn._o { background: #ff9800; color: white; }
+        ._btn._r { background: #f44336; color: white; }
+        ._btn._b { background: #2196f3; color: white; }
+        ._btn._p { background: #9c27b0; color: white; }
+        ._br { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+        ._stars { display: flex; gap: 8px; justify-content: center; margin: 15px 0; }
+        ._star { font-size: 35px; filter: grayscale(1); opacity: 0.3; transition: all 0.5s; }
+        ._star._on { filter: grayscale(0); opacity: 1; animation: _pop 0.5s ease; }
+        @keyframes _pop { 0% { transform: scale(0.3) rotate(-30deg); } 60% { transform: scale(1.4) rotate(10deg); } 100% { transform: scale(1) rotate(0); } }
+        ._confetti { position: fixed; pointer-events: none; font-size: 28px; z-index: 9999; animation: _drop 2s ease-out forwards; }
+        @keyframes _drop { 0% { transform: translateY(-80px) rotate(0deg); opacity: 1; } 100% { transform: translateY(105vh) rotate(720deg); opacity: 0; } }
+        ._grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 850px; margin: 0 auto; padding: 10px; }
+        ._cw { perspective: 700px; cursor: pointer; aspect-ratio: 1 / 1; }
+        ._ci { position: relative; width: 100%; height: 100%; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
+        ._cw._op ._ci { transform: rotateY(180deg); }
+        ._cf, ._cb { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 18px; display: flex; align-items: center; justify-content: center; flex-direction: column; box-shadow: 0 7px 22px rgba(0,0,0,0.13); }
+        ._cf { background: #fffef5; border: 4px solid #ffcc80; padding: 10px; }
+        ._cf ._e { font-size: 75px; line-height: 1; filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.2)); transition: transform 0.3s; }
+        ._cw:hover ._cf ._e { transform: scale(1.12); }
+        ._cf ._fn { font-size: 15px; color: #bf360c; margin-top: 6px; font-weight: bold; }
+        ._cb { background: linear-gradient(145deg, #ff8a65, #f4511e); border: 4px solid #bf360c; transform: rotateY(180deg); color: white; }
+        ._cb ._bl { font-size: 100px; font-weight: bold; text-shadow: 3px 3px 6px rgba(0,0,0,0.3); line-height: 1; }
+        ._cb ._sh { font-size: 22px; margin-top: 4px; }
+        ._cb ._sw { font-size: 16px; margin-top: 6px; background: rgba(255,255,255,0.25); padding: 4px 16px; border-radius: 15px; }
+        @media (max-width: 650px) { ._grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } ._cf ._e { font-size: 55px; } ._cb ._bl { font-size: 70px; } }
+        ._pa { text-align: center; }
+        ._tp { font-size: 100px; display: block; margin: 10px auto; filter: drop-shadow(4px 4px 6px rgba(0,0,0,0.2)); }
+        ._tw { font-size: 28px; font-weight: bold; color: #33691e; margin: 8px 0; }
+        ._tq { font-size: 20px; color: #e65100; margin-bottom: 20px; }
+        ._sbs { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin: 25px 0; }
+        ._sb2 { width: 100px; height: 100px; border-radius: 20px; border: 4px dashed #bdbdbd; display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: bold; color: #9e9e9e; cursor: pointer; transition: all 0.35s; background: white; user-select: none; flex-direction: column; font-size: 16px; gap: 5px; }
+        ._sb2 ._pi { font-size: 36px; line-height: 1; }
+        ._sb2:hover { border-color: #ff9800; background: #fff8e1; transform: scale(1.08); }
+        ._sb2._cp { border-color: #4caf50; background: #e8f5e9; color: #2e7d32; animation: _pg 0.6s ease; }
+        ._sb2._wp { border-color: #f44336; background: #ffebee; color: #c62828; animation: _sh 0.5s ease; }
+        @keyframes _pg { 0%,100% { box-shadow: 0 0 0 0 rgba(76,175,80,0.5); } 50% { box-shadow: 0 0 30px 15px rgba(76,175,80,0.3); } }
+        @keyframes _sh { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-8px); } 40% { transform: translateX(8px); } 60% { transform: translateX(-6px); } 80% { transform: translateX(4px); } }
+        ._sa { text-align: center; }
+        ._si { font-size: 90px; display: block; margin: 10px auto; }
+        ._sn { font-size: 26px; font-weight: bold; color: #33691e; margin: 8px 0; }
+        ._sbr { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin: 20px 0; }
+        ._sbl { width: 70px; height: 70px; border-radius: 15px; border: 3px solid #e0e0e0; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 28px; transition: all 0.3s; }
+        ._sbl._f { background: #c8e6c9; border-color: #4caf50; font-weight: bold; }
+        ._cb2 { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin: 15px 0; }
+        ._cl { width: 65px; height: 65px; border-radius: 50%; border: 3px solid #81c784; background: white; cursor: pointer; font-size: 28px; transition: all 0.3s; }
+        ._cl:hover { background: #e8f5e9; transform: scale(1.1); }
+        ._cl._u { background: #a5d6a7; border-color: #388e3c; }
+        ._sta { text-align: center; max-width: 800px; margin: 0 auto; }
+        ._sp { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin: 20px 0; }
+        ._spc { width: 130px; height: 130px; border-radius: 20px; border: 4px solid #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 70px; cursor: pointer; transition: all 0.3s; background: white; flex-direction: column; padding: 8px; }
+        ._spc:hover { border-color: #ff9800; transform: scale(1.05); }
+        ._spc._sel { border-color: #4caf50; background: #e8f5e9; box-shadow: 0 0 20px rgba(76,175,80,0.3); }
+        ._spc ._pl { font-size: 13px; color: #666; margin-top: 4px; }
+        ._ss { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; min-height: 80px; margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.6); border-radius: 20px; border: 3px dashed #c8e6c9; }
+        ._sslot { width: 80px; height: 80px; border-radius: 15px; border: 3px dashed #bdbdbd; display: flex; align-items: center; justify-content: center; font-size: 40px; background: white; }
+        ._sslot._fs { border-style: solid; border-color: #4caf50; background: #e8f5e9; }
+        ._st { width: 100%; max-width: 700px; height: 100px; border-radius: 15px; border: 3px solid #c8e6c9; padding: 15px; font-size: 16px; font-family: inherit; resize: vertical; margin: 15px 0; }
+        ._aa { text-align: center; max-width: 750px; margin: 0 auto; }
+        ._ap { font-size: 90px; display: block; margin: 10px auto; }
+        ._aw { font-size: 28px; font-weight: bold; color: #33691e; margin: 8px 0; }
+        ._ls { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 20px 0; }
+        ._lslot { width: 65px; height: 65px; border-radius: 15px; border: 3px solid #e0e0e0; background: white; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; color: #757575; }
+        ._lslot._fl { border-color: #4caf50; background: #e8f5e9; color: #2e7d32; }
+        ._lc { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 20px 0; }
+        ._lch { width: 55px; height: 55px; border-radius: 12px; border: 3px solid #81c784; background: white; cursor: pointer; font-size: 28px; font-weight: bold; transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
+        ._lch:hover { background: #e8f5e9; transform: scale(1.1); }
+        ._lch._ul { opacity: 0.3; pointer-events: none; }
+        ._ar { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 15px 0; }
+        ._sc { padding: 8px 18px; border-radius: 20px; font-weight: bold; font-size: 16px; }
+        ._sc._v { background: #f44336; color: white; }
+        ._sc._ch { background: #2196f3; color: white; }
+        ._sc._cs { background: #4caf50; color: white; }
+        ._sc._ns { background: #9e9e9e; color: white; }
+    </style>
+</head>
+<body>
+    <div class="_h1"><h1>🥕🍎 Овощи и Фрукты — Логопедический комплекс</h1><p class="_s">5 игр для развития речи. Выбери вкладку и играй!</p></div>
+    <div class="_tabs">
+        <button class="_tb _a" onclick="_sw(0)">🃏 Карточки-звуки</button>
+        <button class="_tb" onclick="_sw(1)">🔍 Где звук?</button>
+        <button class="_tb" onclick="_sw(2)">👏 Слоговая структура</button>
+        <button class="_tb" onclick="_sw(3)">📖 Связная речь</button>
+        <button class="_tb" onclick="_sw(4)">🔤 Звукобуквенный анализ</button>
+    </div>
+    <div class="_tc _a" id="t0"><h2 class="_gt">🃏 Фонетический слух — Угадай звук</h2><p class="_gd">Нажимай на карточку, смотри какая буква, произноси звук. Взрослый подтверждает — правильно или нет.</p><div class="_stars" id="s1"><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span></div><div class="_sr"><div class="_sb"><div class="_n" id="f1">0</div><div class="_l">Открыто</div></div><div class="_sb"><div class="_n" id="c1">0</div><div class="_l">Верно</div></div></div><div class="_grid" id="g1"></div><div class="_br"><button class="_btn _b" onclick="_sp1()">🔊 Озвучить</button><button class="_btn _o" onclick="_sh1()">🎲 Новые карточки</button><button class="_btn _r" onclick="_rs1()">🔄 Сброс</button></div></div>
+    <div class="_tc" id="t1"><h2 class="_gt">🔍 Место звука в слове</h2><p class="_gd">Посмотри на картинку. Где находится заданный звук — в начале, середине или конце слова? Нажми на нужный квадрат.</p><div class="_stars" id="s2"><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span></div><div class="_sr"><div class="_sb"><div class="_n" id="ps1">0</div><div class="_l">Правильно</div></div><div class="_sb"><div class="_n" id="pt1">0</div><div class="_l">Всего попыток</div></div></div><div class="_pa" id="pg1"><span class="_tp" id="pe1">🍎</span><div class="_tw" id="pw1">ЯБЛОКО</div><div class="_tq" id="pq1">Где звук [А]?</div><div class="_sbs"><div class="_sb2" onclick="_cp('start')"><span class="_pi">🏁</span>Начало</div><div class="_sb2" onclick="_cp('middle')"><span class="_pi">🎯</span>Середина</div><div class="_sb2" onclick="_cp('end')"><span class="_pi">🏁</span>Конец</div></div></div><div class="_br"><button class="_btn _o" onclick="_np()">🎲 Следующее слово</button><button class="_btn _r" onclick="_rs2()">🔄 Сброс</button></div></div>
+    <div class="_tc" id="t2"><h2 class="_gt">👏 Слоговая структура — Прохлопай слово</h2><p class="_gd">Посмотри на картинку. Прохлопай слово по слогам, нажимая кнопки с ладошками. Потом собери слоговую схему.</p><div class="_stars" id="s3"><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span></div><div class="_sr"><div class="_sb"><div class="_n" id="ss1">0</div><div class="_l">Правильно</div></div></div><div class="_sa" id="sg1"><span class="_si" id="se1">🍌</span><div class="_sn" id="sw1">БАНАН</div><p style="color:#888;margin:8px 0;">Сколько слогов? Прохлопай:</p><div class="_cb2" id="cb1"></div><p style="color:#888;margin:15px 0 8px;">Собери схему (нажми нужное число квадратиков):</p><div class="_sbr" id="sb1"></div><p style="margin-top:10px;font-size:18px;color:#33691e;" id="sf1"></p></div><div class="_br"><button class="_btn _o" onclick="_ns()">🎲 Следующее слово</button><button class="_btn _r" onclick="_rs3()">🔄 Сброс</button></div></div>
+    <div class="_tc" id="t3"><h2 class="_gt">📖 Связная речь — Составь рассказ</h2><p class="_gd">Выбери картинки по порядку и составь рассказ. Напиши или продиктуй его в окошке ниже.</p><div class="_stars" id="s4"><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span></div><div class="_sta" id="stg1"><p style="font-weight:bold;color:#33691e;">Выбери 4 картинки по порядку:</p><div class="_sp" id="sp1"></div><p style="font-weight:bold;color:#33691e;margin-top:10px;">Твоя последовательность:</p><div class="_ss" id="ssq1"><div class="_sslot">1</div><div class="_sslot">2</div><div class="_sslot">3</div><div class="_sslot">4</div></div><p style="font-weight:bold;color:#33691e;">Расскажи историю (напиши или продиктуй взрослому):</p><textarea class="_st" id="stxt1" placeholder="Например: Сначала я сорвал спелое яблоко с дерева. Потом помыл его в чистой воде..."></textarea></div><div class="_br"><button class="_btn _p" onclick="_rd()">🔊 Озвучить рассказ</button><button class="_btn _r" onclick="_rs4()">🔄 Сброс</button></div></div>
+    <div class="_tc" id="t4"><h2 class="_gt">🔤 Звукобуквенный анализ — Собери слово</h2><p class="_gd">Посмотри на картинку. Собери слово из букв. Потом раскрась звуки: гласный (красный) или согласный (синий/зелёный).</p><div class="_stars" id="s5"><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span></div><div class="_sr"><div class="_sb"><div class="_n" id="as1">0</div><div class="_l">Слов собрано</div></div></div><div class="_aa" id="ag1"><span class="_ap" id="ae1">🍐</span><div class="_aw" id="aw1">ГРУША</div><p style="color:#888;">Собери слово из букв (нажимай по порядку):</p><div class="_ls" id="ls1"></div><p style="color:#888;margin-top:15px;">Доступные буквы:</p><div class="_lc" id="lc1"></div><p style="color:#888;margin-top:15px;">Раскрась звуки (нажми на каждую букву):</p><div class="_ar" id="ar1"></div><p style="color:#888;font-size:14px;" id="ah1">🔴 гласный &nbsp; 🔵 согласный твёрдый &nbsp; 🟢 согласный мягкий</p><p style="margin-top:10px;font-size:18px;color:#33691e;" id="af1"></p></div><div class="_br"><button class="_btn _o" onclick="_na()">🎲 Следующее слово</button><button class="_btn _r" onclick="_rs5()">🔄 Сброс</button></div></div>
+    <script>
+        const _D = [
+            { e:'🍎', w:'ЯБЛОКО',   s:3, l:['Я','Б','Л','О','К','О'], q:['гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый','гласный'] },
+            { e:'🍐', w:'ГРУША',    s:2, l:['Г','Р','У','Ш','А'],     q:['согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый','гласный'] },
+            { e:'🍌', w:'БАНАН',    s:2, l:['Б','А','Н','А','Н'],     q:['согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый'] },
+            { e:'🍊', w:'АПЕЛЬСИН', s:3, l:['А','П','Е','Л','Ь','С','И','Н'], q:['гласный','согласный-мягкий','гласный','согласный-мягкий','мягкий-знак','согласный-мягкий','гласный','согласный-твёрдый'] },
+            { e:'🍋', w:'ЛИМОН',    s:2, l:['Л','И','М','О','Н'],     q:['согласный-мягкий','гласный','согласный-твёрдый','гласный','согласный-твёрдый'] },
+            { e:'🍇', w:'ВИНОГРАД', s:3, l:['В','И','Н','О','Г','Р','А','Д'], q:['согласный-мягкий','гласный','согласный-твёрдый','гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый'] },
+            { e:'🍑', w:'ПЕРСИК',   s:2, l:['П','Е','Р','С','И','К'], q:['согласный-мягкий','гласный','согласный-твёрдый','согласный-мягкий','гласный','согласный-твёрдый'] },
+            { e:'🍒', w:'ВИШНЯ',    s:2, l:['В','И','Ш','Н','Я'],     q:['согласный-мягкий','гласный','согласный-твёрдый','согласный-твёрдый','гласный'] },
+            { e:'🥕', w:'МОРКОВЬ',  s:2, l:['М','О','Р','К','О','В','Ь'], q:['согласный-твёрдый','гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-мягкий','мягкий-знак'] },
+            { e:'🥒', w:'ОГУРЕЦ',   s:3, l:['О','Г','У','Р','Е','Ц'], q:['гласный','согласный-твёрдый','гласный','согласный-мягкий','гласный','согласный-твёрдый'] },
+            { e:'🍅', w:'ПОМИДОР',  s:3, l:['П','О','М','И','Д','О','Р'], q:['согласный-твёрдый','гласный','согласный-мягкий','гласный','согласный-твёрдый','гласный','согласный-твёрдый'] },
+            { e:'🧅', w:'ЛУК',      s:1, l:['Л','У','К'],             q:['согласный-твёрдый','гласный','согласный-твёрдый'] },
+            { e:'🥔', w:'КАРТОФЕЛЬ',s:3, l:['К','А','Р','Т','О','Ф','Е','Л','Ь'], q:['согласный-твёрдый','гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-мягкий','мягкий-знак'] },
+            { e:'🍆', w:'БАКЛАЖАН', s:3, l:['Б','А','К','Л','А','Ж','А','Н'], q:['согласный-твёрдый','гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый'] },
+            { e:'🌽', w:'КУКУРУЗА', s:4, l:['К','У','К','У','Р','У','З','А'], q:['согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый','гласный'] },
+            { e:'🍉', w:'АРБУЗ',    s:2, l:['А','Р','Б','У','З'],     q:['гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый'] },
+            { e:'🍓', w:'КЛУБНИКА', s:3, l:['К','Л','У','Б','Н','И','К','А'], q:['согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый','согласный-мягкий','гласный','согласный-твёрдый','гласный'] },
+            { e:'🍍', w:'АНАНАС',   s:3, l:['А','Н','А','Н','А','С'], q:['гласный','согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый'] },
+        ];
+        function _sw(i) {
+            document.querySelectorAll('._tb').forEach((b,idx)=>{ b.classList.toggle('_a', idx===i); });
+            document.querySelectorAll('._tc').forEach((t,idx)=>{ t.classList.toggle('_a', idx===i); });
+            if(i===0) _r1();
+        }
+        let _a1=[], _b1=[], _c1=0, _d1=0, _e1=null;
+        function _p1(){ return [..._D].sort(()=>Math.random()-0.5).slice(0,8); }
+        function _r1(){
+            const g=document.getElementById('g1');
+            g.innerHTML='';
+            _a1.forEach((c,i)=>{
+                const w=document.createElement('div');
+                w.className='_cw';
+                w.dataset.i=i;
+                w.onclick=()=>{ _f1(i,w); };
+                const ci=document.createElement('div');
+                ci.className='_ci';
+                const cf=document.createElement('div');
+                cf.className='_cf';
+                cf.innerHTML='<span class="_e">'+c.e+'</span><span class="_fn">'+c.w+'</span>';
+                const cb=document.createElement('div');
+                cb.className='_cb';
+                cb.innerHTML='<span class="_bl">'+c.l[0]+'</span><span class="_sh">звук ['+c.q[0]+']</span><span class="_sw">'+c.w+'</span>';
+                ci.appendChild(cf); ci.appendChild(cb); w.appendChild(ci); g.appendChild(w);
+            });
+        }
+        function _f1(i,w){
+            if(_b1.includes(i)){ w.classList.remove('_op'); _b1=_b1.filter(x=>x!==i); _e1=null; return; }
+            w.classList.add('_op'); _b1.push(i); _c1++; _e1=i; document.getElementById('f1').textContent=_c1;
+            setTimeout(()=>{
+                const c=_a1[i];
+                if(confirm('Ребёнок открыл карточку '+c.e+' '+c.w+'\nЭто буква "'+c.l[0]+'" — звук ['+c.q[0]+']\n\nОн назвал звук правильно?\nНажми "ОК" если ДА, "Отмена" если НЕТ.')){
+                    _d1++; document.getElementById('c1').textContent=_d1; _u1(); _cfetti(w);
+                }
+            },400);
+        }
+        function _u1(){
+            const n=Math.min(Math.floor(_d1/2),5);
+            document.querySelectorAll('#s1 ._star').forEach((s,i)=>{ s.classList.toggle('_on', i<n); });
+            if(n===5){ _bigC(); setTimeout(()=>alert('🎉 Ура! Все звёзды собраны!'),500); }
+        }
+        function _sp1(){
+            if(_e1===null||!_b1.includes(_e1)){ alert('Сначала открой карточку!'); return; }
+            const c=_a1[_e1], t=c.q[0]+' — '+c.w;
+            if('speechSynthesis' in window){ const u=new SpeechSynthesisUtterance(t); u.lang='ru-RU'; u.rate=0.7; u.pitch=1.2; speechSynthesis.speak(u); }
+            else alert('Браузер не поддерживает озвучку. Используй Google Chrome.');
+        }
+        function _sh1(){ _a1=_p1(); _b1=[]; _e1=null; _r1(); }
+        function _rs1(){ _c1=0; _d1=0; _b1=[]; _e1=null; document.getElementById('f1').textContent='0'; document.getElementById('c1').textContent='0'; document.querySelectorAll('#s1 ._star').forEach(s=>s.classList.remove('_on')); _a1=_p1(); _r1(); }
+
+        let _ps=0, _pt=0, _pc=null, _psnd='', _ppos='';
+        function _np(){
+            _pc=_D[Math.floor(Math.random()*_D.length)];
+            const w=_pc.w, si=Math.floor(Math.random()*_pc.q.length);
+            _psnd=_pc.q[si]; const l=_pc.l[si];
+            _ppos=si===0?'start':si===_pc.l.length-1?'end':'middle';
+            document.getElementById('pe1').textContent=_pc.e;
+            document.getElementById('pw1').textContent=w;
+            document.getElementById('pq1').textContent='Где звук ['+_psnd+'] (буква "'+l+'")?';
+            document.querySelectorAll('#pg1 ._sb2').forEach(b=>b.classList.remove('_cp','_wp'));
+        }
+        function _cp(a){
+            if(!_pc)return;
+            _pt++; document.getElementById('pt1').textContent=_pt;
+            const bs=document.querySelectorAll('#pg1 ._sb2');
+            bs.forEach(b=>b.classList.remove('_cp','_wp'));
+            let cb;
+            if(a==='start') cb=bs[0]; else if(a==='middle') cb=bs[1]; else cb=bs[2];
+            if(a===_ppos){ _ps++; document.getElementById('ps1').textContent=_ps; cb.classList.add('_cp'); _u2(); _cfetti(cb); setTimeout(_np,1200); }
+            else {
+                cb.classList.add('_wp');
+                let crb; if(_ppos==='start') crb=bs[0]; else if(_ppos==='middle') crb=bs[1]; else crb=bs[2];
+                setTimeout(()=>crb.classList.add('_cp'),500);
+            }
+        }
+        function _u2(){
+            const n=Math.min(Math.floor(_ps/2),5);
+            document.querySelectorAll('#s2 ._star').forEach((s,i)=>{ s.classList.toggle('_on', i<n); });
+            if(n===5){ _bigC(); setTimeout(()=>alert('🎉 Все звёзды собраны!'),500); }
+        }
+        function _rs2(){ _ps=0; _pt=0; document.getElementById('ps1').textContent='0'; document.getElementById('pt1').textContent='0'; document.querySelectorAll('#s2 ._star').forEach(s=>s.classList.remove('_on')); _np(); }
+
+        let _ssc=0, _scur=null, _scc=0, _sbc=0;
+        function _ns(){
+            _scur=_D[Math.floor(Math.random()*_D.length)];
+            _scc=0; _sbc=0;
+            document.getElementById('se1').textContent=_scur.e;
+            document.getElementById('sw1').textContent=_scur.w;
+            document.getElementById('sf1').textContent='';
+            const cd=document.getElementById('cb1');
+            cd.innerHTML='';
+            for(let i=0;i<5;i++){ const b=document.createElement('button'); b.className='_cl'; b.textContent='👏'; b.onclick=()=>{ if(_scc<5){_scc++; b.classList.add('_u');} }; cd.appendChild(b); }
+            const bd=document.getElementById('sb1');
+            bd.innerHTML='';
+            for(let i=0;i<5;i++){ const b=document.createElement('div'); b.className='_sbl'; b.textContent='⬜'; b.onclick=()=>{ if(_sbc<5){_sbc++; b.classList.add('_f'); b.textContent='🟩'; } if(_sbc===_scur.s){ _ssc++; document.getElementById('ss1').textContent=_ssc; document.getElementById('sf1').textContent='✅ Правильно! '+_scur.w+' — '+_scur.s+' слог(а)!'; _u3(); _cfetti(b); setTimeout(_ns,1500); } else if(_sbc>_scur.s){ document.getElementById('sf1').textContent='❌ Много! В слове "'+_scur.w+'" — '+_scur.s+' слог(а). Попробуй снова.'; _sbc=0; bd.querySelectorAll('._sbl').forEach(x=>{x.classList.remove('_f'); x.textContent='⬜';}); } }; bd.appendChild(b); }
+        }
+        function _u3(){
+            const n=Math.min(Math.floor(_ssc/2),5);
+            document.querySelectorAll('#s3 ._star').forEach((s,i)=>{ s.classList.toggle('_on', i<n); });
+            if(n===5){ _bigC(); setTimeout(()=>alert('🎉 Все звёзды собраны!'),500); }
+        }
+        function _rs3(){ _ssc=0; document.getElementById('ss1').textContent='0'; document.querySelectorAll('#s3 ._star').forEach(s=>s.classList.remove('_on')); _ns(); }
+
+        let _sel=[];
+        const _pics=[{e:'🌳',l:'Дерево'},{e:'🍎',l:'Яблоко'},{e:'🧺',l:'Корзина'},{e:'💧',l:'Вода'},{e:'🔪',l:'Нож'},{e:'🍽️',l:'Тарелка'},{e:'👦',l:'Мальчик'},{e:'👧',l:'Девочка'}];
+        function _rp(){
+            const d=document.getElementById('sp1');
+            d.innerHTML='';
+            _pics.forEach((p,i)=>{
+                const el=document.createElement('div');
+                el.className='_spc';
+                el.innerHTML='<span style="font-size:55px;">'+p.e+'</span><span class="_pl">'+p.l+'</span>';
+                el.onclick=()=>{ if(_sel.length>=4)return; if(el.classList.contains('_sel'))return; el.classList.add('_sel'); _sel.push(p); _updSlots(); };
+                d.appendChild(el);
+            });
+        }
+        function _updSlots(){
+            document.querySelectorAll('#ssq1 ._sslot').forEach((s,i)=>{ if(i<_sel.length){ s.textContent=_sel[i].e; s.classList.add('_fs'); } else { s.textContent=i+1; s.classList.remove('_fs'); } });
+        }
+        function _rd(){
+            const t=document.getElementById('stxt1').value.trim();
+            if(!t){ alert('Напиши рассказ в окошке!'); return; }
+            if('speechSynthesis' in window){ const u=new SpeechSynthesisUtterance(t); u.lang='ru-RU'; u.rate=0.8; speechSynthesis.speak(u); }
+            else alert('Браузер не поддерживает озвучку.');
+        }
+        function _rs4(){ _sel=[]; document.querySelectorAll('#sp1 ._spc').forEach(p=>p.classList.remove('_sel')); _updSlots(); document.getElementById('stxt1').value=''; }
+
+        let _as=0, _ac=null, _afill=[], _ashuf=[], _awb=false, _asp=[];
+        const _stypes=[{id:'vowel',name:'Гласный',color:'#f44336',css:'_v'},{id:'consonant-hard',name:'Согласный твёрдый',color:'#2196f3',css:'_ch'},{id:'consonant-soft',name:'Согласный мягкий',color:'#4caf50',css:'_cs'},{id:'no-sound',name:'Не обозначает звука',color:'#9e9e9e',css:'_ns'}];
+        function _shuf(a){ const b=[...a]; for(let i=b.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; } return b; }
+        function _na(){
+            _ac=_D[Math.floor(Math.random()*_D.length)];
+            _afill=new Array(_ac.l.length).fill(null);
+            _awb=false; _asp=new Array(_ac.l.length).fill(null);
+            document.getElementById('ae1').textContent=_ac.e;
+            document.getElementById('aw1').textContent='';
+            document.getElementById('af1').textContent='';
+            document.getElementById('ar1').innerHTML='';
+            const sd=document.getElementById('ls1');
+            sd.innerHTML='';
+            _ac.l.forEach((l,i)=>{ const s=document.createElement('div'); s.className='_lslot'; s.dataset.s=i; s.textContent='?'; s.style.color='#bdbdbd'; s.onclick=()=>{ if(_awb)return; if(_afill[i]!==null){ const rt=_afill[i]; if(_lcnt[rt]!==undefined)_lcnt[rt]--; _afill[i]=null; s.textContent='?'; s.style.color='#bdbdbd'; s.classList.remove('_fl'); const chs=document.getElementById('lc1').querySelectorAll('._lch'); for(let c=0;c<chs.length;c++){ if(chs[c].textContent===rt && chs[c].classList.contains('_ul')){ chs[c].classList.remove('_ul'); break; } } } }; sd.appendChild(s); });
+            _ashuf=_shuf(_ac.l);
+            const cd=document.getElementById('lc1');
+            cd.innerHTML='';
+            const _lcnt={};
+            _ac.l.forEach(l=>{ if(!_lcnt[l])_lcnt[l]=0; _lcnt[l]++; });
+            const used={}; for(const k in _lcnt)used[k]=0;
+            _ashuf.forEach(l=>{
+                const b=document.createElement('div');
+                b.className='_lch';
+                b.textContent=l;
+                b.onclick=()=>{
+                    if(_awb)return;
+                    if(b.classList.contains('_ul'))return;
+                    if(used[l]>=(_lcnt[l]||0))return;
+                    const idx=_afill.indexOf(null);
+                    if(idx===-1)return;
+                    _afill[idx]=l; used[l]++;
+                    b.classList.add('_ul');
+                    const slots=document.getElementById('ls1').querySelectorAll('._lslot');
+                    slots[idx].textContent=l;
+                    slots[idx].style.color='#2e7d32';
+                    slots[idx].classList.add('_fl');
+                    if(_afill.indexOf(null)===-1){
+                        const wd=_afill.join('');
+                        if(wd===_ac.w){ _awb=true; document.getElementById('aw1').textContent=_ac.w; document.getElementById('af1').textContent='✅ Слово собрано! Теперь раскрась каждую букву — выбери цвет и нажми на букву.'; _renderColor(); }
+                        else { document.getElementById('af1').textContent='❌ Получилось: '+wd+'. Нажми на слоты чтобы убрать буквы и попробуй снова.'; }
+                    }
+                };
+                cd.appendChild(b);
+            });
+            document.getElementById('ar1').innerHTML='';
+        }
+        function _renderColor(){
+            const rd=document.getElementById('ar1');
+            rd.innerHTML='';
+            let _selColor=null;
+            const pal=document.createElement('div');
+            pal.style.cssText='display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;';
+            pal.innerHTML='<p style="width:100%;color:#888;margin-bottom:5px;">Выбери цвет, потом нажми на букву:</p>';
+            _stypes.forEach(st=>{
+                const cb=document.createElement('div');
+                cb.className='_sc '+st.css;
+                cb.textContent=st.name;
+                cb.style.cssText='cursor:pointer;padding:10px 18px;font-size:14px;border-radius:20px;font-weight:bold;transition:all 0.2s;user-select:none;';
+                cb.dataset.sid=st.id;
+                cb.onclick=()=>{ _selColor=st.id; pal.querySelectorAll('._sc').forEach(b=>{b.style.outline='none';b.style.transform='scale(1)';}); cb.style.outline='3px solid #000'; cb.style.transform='scale(1.08)'; document.getElementById('af1').textContent='Выбран: «'+st.name+'». Нажимай на буквы чтобы раскрасить.'; };
+                pal.appendChild(cb);
+            });
+            rd.appendChild(pal);
+            const lr=document.createElement('div');
+            lr.style.cssText='display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:15px 0;';
+            _ac.l.forEach((l,i)=>{
+                const lb=document.createElement('div');
+                lb.textContent=l;
+                lb.style.cssText='width:60px;height:60px;border-radius:15px;border:3px dashed #bdbdbd;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:bold;background:white;cursor:pointer;transition:all 0.3s;';
+                lb.dataset.li=i;
+                if(_asp[i]!==null){ const p=_stypes.find(s=>s.id===_asp[i]); if(p){ lb.style.background=p.color; lb.style.color='white'; lb.style.borderColor=p.color; lb.style.borderStyle='solid'; } }
+                lb.onclick=()=>{
+                    if(_selColor===null){ document.getElementById('af1').textContent='Сначала выбери цвет сверху!'; return; }
+                    _asp[i]=_selColor;
+                    const p=_stypes.find(s=>s.id===_selColor);
+                    lb.style.background=p.color; lb.style.color='white'; lb.style.borderColor=p.color; lb.style.borderStyle='solid'; lb.style.transform='scale(1.1)';
+                    setTimeout(()=>lb.style.transform='scale(1)',200);
+                    document.getElementById('af1').textContent='Буква «'+l+'» раскрашена. Раскрась все буквы и нажми «Проверить».';
+                    if(_asp.indexOf(null)===-1) document.getElementById('af1').textContent='Все буквы раскрашены! Нажми «Проверить раскраску».';
+                };
+                lr.appendChild(lb);
+            });
+            rd.appendChild(lr);
+            const chk=document.createElement('button');
+            chk.textContent='✅ Проверить раскраску';
+            chk.className='_btn _g';
+            chk.style.marginTop='15px';
+            chk.onclick=()=>{ _chkColor(); };
+            rd.appendChild(chk);
+        }
+        function _chkColor(){
+            let ok=true, det=[];
+            _ac.l.forEach((l,i)=>{
+                const c=_ac.q[i];
+                let cid;
+                if(c==='гласный') cid='vowel';
+                else if(c==='согласный-твёрдый') cid='consonant-hard';
+                else if(c==='согласный-мягкий') cid='consonant-soft';
+                else if(c==='мягкий-знак'||c==='твёрдый-знак') cid='no-sound';
+                else cid='vowel';
+                const p=_asp[i], isOk=p===cid;
+                if(!isOk) ok=false;
+                const pn=_stypes.find(s=>s.id===p);
+                det.push({l,picked:pn?pn.name:'не выбрано',correct:c,isOk});
+            });
+            const rd=document.getElementById('ar1');
+            rd.querySelectorAll('._sum').forEach(el=>el.remove());
+            if(ok){
+                _as++; document.getElementById('as1').textContent=_as; _u5(); _cfetti(rd); document.getElementById('af1').textContent='🎉 Всё верно! Нажми «Следующее слово».';
+                const s=document.createElement('div');
+                s.className='_sum';
+                s.style.cssText='margin-top:15px;padding:10px;background:#e8f5e9;border-radius:15px;';
+                s.innerHTML='<strong>✅ Правильно:</strong><br>'+det.map(d=>'«'+d.l+'» = '+d.correct).join(' | ');
+                rd.appendChild(s);
+            } else {
+                document.getElementById('af1').textContent='❌ Есть ошибки! Смотри подсказку и исправляй.';
+                const s=document.createElement('div');
+                s.className='_sum';
+                s.style.cssText='margin-top:15px;padding:10px;background:#ffebee;border-radius:15px;';
+                s.innerHTML='<strong>❌ Ошибки:</strong><br>'+det.filter(d=>!d.isOk).map(d=>'«'+d.l+'» — выбрано «'+d.picked+'», нужно «'+d.correct+'»').join('<br>');
+                rd.appendChild(s);
+            }
+        }
+        function _u5(){
+            const n=Math.min(Math.floor(_as/2),5);
+            document.querySelectorAll('#s5 ._star').forEach((s,i)=>{ s.classList.toggle('_on', i<n); });
+            if(n===5){ _bigC(); setTimeout(()=>alert('🎉 Все звёзды собраны!'),500); }
+        }
+        function _rs5(){ _as=0; _awb=false; _asp=[]; document.getElementById('as1').textContent='0'; document.getElementById('ar1').innerHTML=''; document.getElementById('af1').textContent=''; document.getElementById('aw1').textContent=''; document.querySelectorAll('#s5 ._star').forEach(s=>s.classList.remove('_on')); _na(); }
+
+        function _cfetti(el){
+            const r=el.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height/2, emojis=['🌟','✨','💫','🎉','👏','💚','🍎','🥕'];
+            for(let i=0;i<10;i++){ const p=document.createElement('span'); p.className='_confetti'; p.textContent=emojis[Math.floor(Math.random()*emojis.length)]; p.style.left=(cx+(Math.random()-0.5)*200)+'px'; p.style.top=cy+'px'; p.style.animationDuration=(1.5+Math.random())+'s'; document.body.appendChild(p); setTimeout(()=>{ if(p.parentNode)p.parentNode.removeChild(p); },2500); }
+        }
+        function _bigC(){
+            const emojis=['🎆','🎇','🎊','🎉','🌟','✨','💚','🏆','👑','🥇','🍎','🍐','🍊','🥕'];
+            for(let i=0;i<60;i++){ setTimeout(()=>{ const p=document.createElement('span'); p.className='_confetti'; p.textContent=emojis[Math.floor(Math.random()*emojis.length)]; p.style.left=Math.random()*window.innerWidth+'px'; p.style.top='-60px'; p.style.fontSize=(25+Math.random()*40)+'px'; p.style.animationDuration=(2+Math.random()*2.5)+'s'; document.body.appendChild(p); setTimeout(()=>{ if(p.parentNode)p.parentNode.removeChild(p); },4500); }, i*40); }
+        }
+        document.addEventListener('keydown',e=>{ if(e.code==='Space'&&document.getElementById('t0').classList.contains('_a')){ e.preventDefault(); _sp1(); } });
+        function _init(){ _a1=_p1(); _r1(); _np(); _ns(); _rp(); _na(); }
+        _init();
+        console.log('✅ Логопедический комплекс "Овощи и Фрукты" загружен!');
+    </script>
+</body>
+</html>
