@@ -6,406 +6,1662 @@
     <title>Логопедический комплекс — Овощи и Фрукты</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: linear-gradient(180deg, #e8f5e9 0%, #fff9c4 50%, #ffecb3 100%); min-height: 100vh; font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, sans-serif; padding: 15px; }
-        ._h1 { text-align: center; margin-bottom: 15px; }
-        ._h1 h1 { color: #2e7d32; font-size: 34px; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); margin-bottom: 5px; }
-        ._h1 ._s { color: #558b2f; font-size: 16px; }
-        ._tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 20px; padding: 0 10px; }
-        ._tb { padding: 14px 20px; border: 3px solid #81c784; background: white; border-radius: 30px; cursor: pointer; font-size: 15px; font-weight: bold; color: #33691e; transition: all 0.3s; font-family: inherit; white-space: nowrap; }
-        ._tb:hover { background: #c8e6c9; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-        ._tb._a { background: #4caf50; color: white; border-color: #2e7d32; box-shadow: 0 4px 15px rgba(76,175,80,0.4); }
-        ._tc { display: none; max-width: 1000px; margin: 0 auto; animation: _fade 0.4s ease; }
-        ._tc._a { display: block; }
-        @keyframes _fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        ._gt { text-align: center; color: #33691e; font-size: 24px; margin-bottom: 10px; }
-        ._gd { text-align: center; color: #689f38; margin-bottom: 20px; font-size: 16px; }
-        ._sr { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
-        ._sb { background: white; padding: 12px 22px; border-radius: 15px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); text-align: center; min-width: 100px; }
-        ._sb ._n { font-size: 36px; font-weight: bold; color: #4caf50; }
-        ._sb ._l { font-size: 13px; color: #888; }
-        ._btn { padding: 12px 25px; font-size: 16px; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; transition: all 0.3s; font-family: inherit; box-shadow: 0 3px 10px rgba(0,0,0,0.12); }
-        ._btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
-        ._btn:active { transform: translateY(0); }
-        ._btn._g { background: #4caf50; color: white; }
-        ._btn._o { background: #ff9800; color: white; }
-        ._btn._r { background: #f44336; color: white; }
-        ._btn._b { background: #2196f3; color: white; }
-        ._btn._p { background: #9c27b0; color: white; }
-        ._br { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
-        ._stars { display: flex; gap: 8px; justify-content: center; margin: 15px 0; }
-        ._star { font-size: 35px; filter: grayscale(1); opacity: 0.3; transition: all 0.5s; }
-        ._star._on { filter: grayscale(0); opacity: 1; animation: _pop 0.5s ease; }
-        @keyframes _pop { 0% { transform: scale(0.3) rotate(-30deg); } 60% { transform: scale(1.4) rotate(10deg); } 100% { transform: scale(1) rotate(0); } }
-        ._confetti { position: fixed; pointer-events: none; font-size: 28px; z-index: 9999; animation: _drop 2s ease-out forwards; }
-        @keyframes _drop { 0% { transform: translateY(-80px) rotate(0deg); opacity: 1; } 100% { transform: translateY(105vh) rotate(720deg); opacity: 0; } }
-        ._grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 850px; margin: 0 auto; padding: 10px; }
-        ._cw { perspective: 700px; cursor: pointer; aspect-ratio: 1 / 1; }
-        ._ci { position: relative; width: 100%; height: 100%; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
-        ._cw._op ._ci { transform: rotateY(180deg); }
-        ._cf, ._cb { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 18px; display: flex; align-items: center; justify-content: center; flex-direction: column; box-shadow: 0 7px 22px rgba(0,0,0,0.13); }
-        ._cf { background: #fffef5; border: 4px solid #ffcc80; padding: 10px; }
-        ._cf ._e { font-size: 75px; line-height: 1; filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.2)); transition: transform 0.3s; }
-        ._cw:hover ._cf ._e { transform: scale(1.12); }
-        ._cf ._fn { font-size: 15px; color: #bf360c; margin-top: 6px; font-weight: bold; }
-        ._cb { background: linear-gradient(145deg, #ff8a65, #f4511e); border: 4px solid #bf360c; transform: rotateY(180deg); color: white; }
-        ._cb ._bl { font-size: 100px; font-weight: bold; text-shadow: 3px 3px 6px rgba(0,0,0,0.3); line-height: 1; }
-        ._cb ._sh { font-size: 22px; margin-top: 4px; }
-        ._cb ._sw { font-size: 16px; margin-top: 6px; background: rgba(255,255,255,0.25); padding: 4px 16px; border-radius: 15px; }
-        @media (max-width: 650px) { ._grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } ._cf ._e { font-size: 55px; } ._cb ._bl { font-size: 70px; } }
-        ._pa { text-align: center; }
-        ._tp { font-size: 100px; display: block; margin: 10px auto; filter: drop-shadow(4px 4px 6px rgba(0,0,0,0.2)); }
-        ._tw { font-size: 28px; font-weight: bold; color: #33691e; margin: 8px 0; }
-        ._tq { font-size: 20px; color: #e65100; margin-bottom: 20px; }
-        ._sbs { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin: 25px 0; }
-        ._sb2 { width: 100px; height: 100px; border-radius: 20px; border: 4px dashed #bdbdbd; display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: bold; color: #9e9e9e; cursor: pointer; transition: all 0.35s; background: white; user-select: none; flex-direction: column; font-size: 16px; gap: 5px; }
-        ._sb2 ._pi { font-size: 36px; line-height: 1; }
-        ._sb2:hover { border-color: #ff9800; background: #fff8e1; transform: scale(1.08); }
-        ._sb2._cp { border-color: #4caf50; background: #e8f5e9; color: #2e7d32; animation: _pg 0.6s ease; }
-        ._sb2._wp { border-color: #f44336; background: #ffebee; color: #c62828; animation: _sh 0.5s ease; }
-        @keyframes _pg { 0%,100% { box-shadow: 0 0 0 0 rgba(76,175,80,0.5); } 50% { box-shadow: 0 0 30px 15px rgba(76,175,80,0.3); } }
-        @keyframes _sh { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-8px); } 40% { transform: translateX(8px); } 60% { transform: translateX(-6px); } 80% { transform: translateX(4px); } }
-        ._sa { text-align: center; }
-        ._si { font-size: 90px; display: block; margin: 10px auto; }
-        ._sn { font-size: 26px; font-weight: bold; color: #33691e; margin: 8px 0; }
-        ._sbr { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin: 20px 0; }
-        ._sbl { width: 70px; height: 70px; border-radius: 15px; border: 3px solid #e0e0e0; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 28px; transition: all 0.3s; }
-        ._sbl._f { background: #c8e6c9; border-color: #4caf50; font-weight: bold; }
-        ._cb2 { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin: 15px 0; }
-        ._cl { width: 65px; height: 65px; border-radius: 50%; border: 3px solid #81c784; background: white; cursor: pointer; font-size: 28px; transition: all 0.3s; }
-        ._cl:hover { background: #e8f5e9; transform: scale(1.1); }
-        ._cl._u { background: #a5d6a7; border-color: #388e3c; }
-        ._sta { text-align: center; max-width: 800px; margin: 0 auto; }
-        ._sp { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin: 20px 0; }
-        ._spc { width: 130px; height: 130px; border-radius: 20px; border: 4px solid #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 70px; cursor: pointer; transition: all 0.3s; background: white; flex-direction: column; padding: 8px; }
-        ._spc:hover { border-color: #ff9800; transform: scale(1.05); }
-        ._spc._sel { border-color: #4caf50; background: #e8f5e9; box-shadow: 0 0 20px rgba(76,175,80,0.3); }
-        ._spc ._pl { font-size: 13px; color: #666; margin-top: 4px; }
-        ._ss { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; min-height: 80px; margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.6); border-radius: 20px; border: 3px dashed #c8e6c9; }
-        ._sslot { width: 80px; height: 80px; border-radius: 15px; border: 3px dashed #bdbdbd; display: flex; align-items: center; justify-content: center; font-size: 40px; background: white; }
-        ._sslot._fs { border-style: solid; border-color: #4caf50; background: #e8f5e9; }
-        ._st { width: 100%; max-width: 700px; height: 100px; border-radius: 15px; border: 3px solid #c8e6c9; padding: 15px; font-size: 16px; font-family: inherit; resize: vertical; margin: 15px 0; }
-        ._aa { text-align: center; max-width: 750px; margin: 0 auto; }
-        ._ap { font-size: 90px; display: block; margin: 10px auto; }
-        ._aw { font-size: 28px; font-weight: bold; color: #33691e; margin: 8px 0; }
-        ._ls { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 20px 0; }
-        ._lslot { width: 65px; height: 65px; border-radius: 15px; border: 3px solid #e0e0e0; background: white; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; color: #757575; }
-        ._lslot._fl { border-color: #4caf50; background: #e8f5e9; color: #2e7d32; }
-        ._lc { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 20px 0; }
-        ._lch { width: 55px; height: 55px; border-radius: 12px; border: 3px solid #81c784; background: white; cursor: pointer; font-size: 28px; font-weight: bold; transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
-        ._lch:hover { background: #e8f5e9; transform: scale(1.1); }
-        ._lch._ul { opacity: 0.3; pointer-events: none; }
-        ._ar { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 15px 0; }
-        ._sc { padding: 8px 18px; border-radius: 20px; font-weight: bold; font-size: 16px; }
-        ._sc._v { background: #f44336; color: white; }
-        ._sc._ch { background: #2196f3; color: white; }
-        ._sc._cs { background: #4caf50; color: white; }
-        ._sc._ns { background: #9e9e9e; color: white; }
+
+        body {
+            background: linear-gradient(180deg, #e8f5e9 0%, #fff9c4 50%, #ffecb3 100%);
+            min-height: 100vh;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, sans-serif;
+            padding: 15px;
+        }
+
+        .main-header {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .main-header h1 {
+            color: #2e7d32;
+            font-size: 34px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 5px;
+        }
+
+        .main-header .subtitle {
+            color: #558b2f;
+            font-size: 16px;
+        }
+
+        .tab-menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+
+        .tab-btn {
+            padding: 14px 20px;
+            border: 3px solid #81c784;
+            background: white;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            color: #33691e;
+            transition: all 0.3s;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            background: #c8e6c9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .tab-btn.active {
+            background: #4caf50;
+            color: white;
+            border-color: #2e7d32;
+            box-shadow: 0 4px 15px rgba(76,175,80,0.4);
+        }
+
+        .tab-content {
+            display: none;
+            max-width: 1000px;
+            margin: 0 auto;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .game-title {
+            text-align: center;
+            color: #33691e;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .game-desc {
+            text-align: center;
+            color: #689f38;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .score-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .score-box {
+            background: white;
+            padding: 12px 22px;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .score-box .num {
+            font-size: 36px;
+            font-weight: bold;
+            color: #4caf50;
+        }
+
+        .score-box .lbl {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-family: inherit;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+        }
+
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(0); }
+
+        .btn-green { background: #4caf50; color: white; }
+        .btn-orange { background: #ff9800; color: white; }
+        .btn-red { background: #f44336; color: white; }
+        .btn-blue { background: #2196f3; color: white; }
+        .btn-purple { background: #9c27b0; color: white; }
+
+        .btn-row {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .stars-line {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .star-icon {
+            font-size: 35px;
+            filter: grayscale(1);
+            opacity: 0.3;
+            transition: all 0.5s;
+        }
+        .star-icon.on {
+            filter: grayscale(0);
+            opacity: 1;
+            animation: popStar 0.5s ease;
+        }
+        @keyframes popStar {
+            0% { transform: scale(0.3) rotate(-30deg); }
+            60% { transform: scale(1.4) rotate(10deg); }
+            100% { transform: scale(1) rotate(0); }
+        }
+
+        .confetti-particle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 28px;
+            z-index: 9999;
+            animation: confettiDrop 2s ease-out forwards;
+        }
+        @keyframes confettiDrop {
+            0% { transform: translateY(-80px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* ИГРА 1: Карточки */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .card-wrap {
+            perspective: 700px;
+            cursor: pointer;
+            aspect-ratio: 1 / 1;
+        }
+
+        .card-inner-flip {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .card-wrap.opened .card-inner-flip {
+            transform: rotateY(180deg);
+        }
+
+        .card-face, .card-backface {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            box-shadow: 0 7px 22px rgba(0,0,0,0.13);
+        }
+
+        .card-face {
+            background: #fffef5;
+            border: 4px solid #ffcc80;
+            padding: 10px;
+        }
+        .card-face .fruit-emoji {
+            font-size: 75px;
+            line-height: 1;
+            filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.2));
+            transition: transform 0.3s;
+        }
+        .card-wrap:hover .card-face .fruit-emoji {
+            transform: scale(1.12);
+        }
+        .card-face .fruit-name {
+            font-size: 15px;
+            color: #bf360c;
+            margin-top: 6px;
+            font-weight: bold;
+        }
+
+        .card-backface {
+            background: linear-gradient(145deg, #ff8a65, #f4511e);
+            border: 4px solid #bf360c;
+            transform: rotateY(180deg);
+            color: white;
+        }
+        .card-backface .big-letter {
+            font-size: 100px;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            line-height: 1;
+        }
+        .card-backface .sound-hint {
+            font-size: 22px;
+            margin-top: 4px;
+        }
+        .card-backface .sample-word {
+            font-size: 16px;
+            margin-top: 6px;
+            background: rgba(255,255,255,0.25);
+            padding: 4px 16px;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 650px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .card-face .fruit-emoji { font-size: 55px; }
+            .card-backface .big-letter { font-size: 70px; }
+        }
+
+        /* ИГРА 2: Где звук? */
+        .position-game-area { text-align: center; }
+        .target-picture {
+            font-size: 100px;
+            display: block;
+            margin: 10px auto;
+            filter: drop-shadow(4px 4px 6px rgba(0,0,0,0.2));
+        }
+        .target-word {
+            font-size: 28px;
+            font-weight: bold;
+            color: #33691e;
+            margin: 8px 0;
+        }
+        .target-question {
+            font-size: 20px;
+            color: #e65100;
+            margin-bottom: 20px;
+        }
+        .sound-blocks {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+        .sound-block {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            border: 4px dashed #bdbdbd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: #9e9e9e;
+            cursor: pointer;
+            transition: all 0.35s;
+            background: white;
+            user-select: none;
+            flex-direction: column;
+            font-size: 16px;
+            gap: 5px;
+        }
+        .sound-block .pos-icon {
+            font-size: 36px;
+            line-height: 1;
+        }
+        .sound-block:hover {
+            border-color: #ff9800;
+            background: #fff8e1;
+            transform: scale(1.08);
+        }
+        .sound-block.correct-pick {
+            border-color: #4caf50;
+            background: #e8f5e9;
+            color: #2e7d32;
+            animation: pulseGreen 0.6s ease;
+        }
+        .sound-block.wrong-pick {
+            border-color: #f44336;
+            background: #ffebee;
+            color: #c62828;
+            animation: shake 0.5s ease;
+        }
+        @keyframes pulseGreen {
+            0%,100% { box-shadow: 0 0 0 0 rgba(76,175,80,0.5); }
+            50% { box-shadow: 0 0 30px 15px rgba(76,175,80,0.3); }
+        }
+        @keyframes shake {
+            0%,100% { transform: translateX(0); }
+            20% { transform: translateX(-8px); }
+            40% { transform: translateX(8px); }
+            60% { transform: translateX(-6px); }
+            80% { transform: translateX(4px); }
+        }
+
+        /* ИГРА 3: Слоговая структура */
+        .syllable-area { text-align: center; }
+        .syllable-item {
+            font-size: 90px;
+            display: block;
+            margin: 10px auto;
+        }
+        .syllable-name {
+            font-size: 26px;
+            font-weight: bold;
+            color: #33691e;
+            margin: 8px 0;
+        }
+        .syllable-blocks-row {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .syllable-block {
+            width: 70px;
+            height: 70px;
+            border-radius: 15px;
+            border: 3px solid #e0e0e0;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            transition: all 0.3s;
+        }
+        .syllable-block.filled {
+            background: #c8e6c9;
+            border-color: #4caf50;
+            font-weight: bold;
+        }
+        .clap-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+        .clap-btn {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            border: 3px solid #81c784;
+            background: white;
+            cursor: pointer;
+            font-size: 28px;
+            transition: all 0.3s;
+        }
+        .clap-btn:hover { background: #e8f5e9; transform: scale(1.1); }
+        .clap-btn.used { background: #a5d6a7; border-color: #388e3c; }
+
+        /* ИГРА 4: Связная речь */
+        .story-area {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .story-pictures {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .story-pic {
+            width: 130px;
+            height: 130px;
+            border-radius: 20px;
+            border: 4px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            flex-direction: column;
+            padding: 8px;
+        }
+        .story-pic:hover { border-color: #ff9800; transform: scale(1.05); }
+        .story-pic.selected-pic { border-color: #4caf50; background: #e8f5e9; box-shadow: 0 0 20px rgba(76,175,80,0.3); }
+        .story-pic .pic-label {
+            font-size: 13px;
+            color: #666;
+            margin-top: 4px;
+        }
+        .story-sequence {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            min-height: 80px;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 20px;
+            border: 3px dashed #c8e6c9;
+        }
+        .story-slot {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            border: 3px dashed #bdbdbd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            background: white;
+        }
+        .story-slot.filled-slot {
+            border-style: solid;
+            border-color: #4caf50;
+            background: #e8f5e9;
+        }
+        .story-textarea {
+            width: 100%;
+            max-width: 700px;
+            height: 100px;
+            border-radius: 15px;
+            border: 3px solid #c8e6c9;
+            padding: 15px;
+            font-size: 16px;
+            font-family: inherit;
+            resize: vertical;
+            margin: 15px 0;
+        }
+
+        /* ИГРА 5: Звукобуквенный анализ */
+        .analysis-area {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        .analysis-pic {
+            font-size: 90px;
+            display: block;
+            margin: 10px auto;
+        }
+        .analysis-word {
+            font-size: 28px;
+            font-weight: bold;
+            color: #33691e;
+            margin: 8px 0;
+        }
+        .letter-slots {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .letter-slot {
+            width: 65px;
+            height: 65px;
+            border-radius: 15px;
+            border: 3px solid #e0e0e0;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: #757575;
+        }
+        .letter-slot.filled-letter {
+            border-color: #4caf50;
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .letter-choices {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .letter-choice {
+            width: 55px;
+            height: 55px;
+            border-radius: 12px;
+            border: 3px solid #81c784;
+            background: white;
+            cursor: pointer;
+            font-size: 28px;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .letter-choice:hover { background: #e8f5e9; transform: scale(1.1); }
+        .letter-choice.used-letter { opacity: 0.3; pointer-events: none; }
+        .analysis-result {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+        .sound-chip {
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .sound-chip.vowel { background: #f44336; color: white; }
+        .sound-chip.consonant-hard { background: #2196f3; color: white; }
+        .sound-chip.consonant-soft { background: #4caf50; color: white; }
+        .sound-chip.no-sound { background: #9e9e9e; color: white; }
     </style>
 </head>
 <body>
-    <div class="_h1"><h1>🥕🍎 Овощи и Фрукты — Логопедический комплекс</h1><p class="_s">5 игр для развития речи. Выбери вкладку и играй!</p></div>
-    <div class="_tabs">
-        <button class="_tb _a" onclick="_sw(0)">🃏 Карточки-звуки</button>
-        <button class="_tb" onclick="_sw(1)">🔍 Где звук?</button>
-        <button class="_tb" onclick="_sw(2)">👏 Слоговая структура</button>
-        <button class="_tb" onclick="_sw(3)">📖 Связная речь</button>
-        <button class="_tb" onclick="_sw(4)">🔤 Звукобуквенный анализ</button>
+
+    <div class="main-header">
+        <h1>🥕🍎 Овощи и Фрукты — Логопедический комплекс</h1>
+        <p class="subtitle">5 игр для развития речи. Выбери вкладку и играй!</p>
     </div>
-    <div class="_tc _a" id="t0"><h2 class="_gt">🃏 Фонетический слух — Угадай звук</h2><p class="_gd">Нажимай на карточку, смотри какая буква, произноси звук. Взрослый подтверждает — правильно или нет.</p><div class="_stars" id="s1"><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span></div><div class="_sr"><div class="_sb"><div class="_n" id="f1">0</div><div class="_l">Открыто</div></div><div class="_sb"><div class="_n" id="c1">0</div><div class="_l">Верно</div></div></div><div class="_grid" id="g1"></div><div class="_br"><button class="_btn _b" onclick="_sp1()">🔊 Озвучить</button><button class="_btn _o" onclick="_sh1()">🎲 Новые карточки</button><button class="_btn _r" onclick="_rs1()">🔄 Сброс</button></div></div>
-    <div class="_tc" id="t1"><h2 class="_gt">🔍 Место звука в слове</h2><p class="_gd">Посмотри на картинку. Где находится заданный звук — в начале, середине или конце слова? Нажми на нужный квадрат.</p><div class="_stars" id="s2"><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span></div><div class="_sr"><div class="_sb"><div class="_n" id="ps1">0</div><div class="_l">Правильно</div></div><div class="_sb"><div class="_n" id="pt1">0</div><div class="_l">Всего попыток</div></div></div><div class="_pa" id="pg1"><span class="_tp" id="pe1">🍎</span><div class="_tw" id="pw1">ЯБЛОКО</div><div class="_tq" id="pq1">Где звук [А]?</div><div class="_sbs"><div class="_sb2" onclick="_cp('start')"><span class="_pi">🏁</span>Начало</div><div class="_sb2" onclick="_cp('middle')"><span class="_pi">🎯</span>Середина</div><div class="_sb2" onclick="_cp('end')"><span class="_pi">🏁</span>Конец</div></div></div><div class="_br"><button class="_btn _o" onclick="_np()">🎲 Следующее слово</button><button class="_btn _r" onclick="_rs2()">🔄 Сброс</button></div></div>
-    <div class="_tc" id="t2"><h2 class="_gt">👏 Слоговая структура — Прохлопай слово</h2><p class="_gd">Посмотри на картинку. Прохлопай слово по слогам, нажимая кнопки с ладошками. Потом собери слоговую схему.</p><div class="_stars" id="s3"><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span></div><div class="_sr"><div class="_sb"><div class="_n" id="ss1">0</div><div class="_l">Правильно</div></div></div><div class="_sa" id="sg1"><span class="_si" id="se1">🍌</span><div class="_sn" id="sw1">БАНАН</div><p style="color:#888;margin:8px 0;">Сколько слогов? Прохлопай:</p><div class="_cb2" id="cb1"></div><p style="color:#888;margin:15px 0 8px;">Собери схему (нажми нужное число квадратиков):</p><div class="_sbr" id="sb1"></div><p style="margin-top:10px;font-size:18px;color:#33691e;" id="sf1"></p></div><div class="_br"><button class="_btn _o" onclick="_ns()">🎲 Следующее слово</button><button class="_btn _r" onclick="_rs3()">🔄 Сброс</button></div></div>
-    <div class="_tc" id="t3"><h2 class="_gt">📖 Связная речь — Составь рассказ</h2><p class="_gd">Выбери картинки по порядку и составь рассказ. Напиши или продиктуй его в окошке ниже.</p><div class="_stars" id="s4"><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span></div><div class="_sta" id="stg1"><p style="font-weight:bold;color:#33691e;">Выбери 4 картинки по порядку:</p><div class="_sp" id="sp1"></div><p style="font-weight:bold;color:#33691e;margin-top:10px;">Твоя последовательность:</p><div class="_ss" id="ssq1"><div class="_sslot">1</div><div class="_sslot">2</div><div class="_sslot">3</div><div class="_sslot">4</div></div><p style="font-weight:bold;color:#33691e;">Расскажи историю (напиши или продиктуй взрослому):</p><textarea class="_st" id="stxt1" placeholder="Например: Сначала я сорвал спелое яблоко с дерева. Потом помыл его в чистой воде..."></textarea></div><div class="_br"><button class="_btn _p" onclick="_rd()">🔊 Озвучить рассказ</button><button class="_btn _r" onclick="_rs4()">🔄 Сброс</button></div></div>
-    <div class="_tc" id="t4"><h2 class="_gt">🔤 Звукобуквенный анализ — Собери слово</h2><p class="_gd">Посмотри на картинку. Собери слово из букв. Потом раскрась звуки: гласный (красный) или согласный (синий/зелёный).</p><div class="_stars" id="s5"><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span><span class="_star">⭐</span></div><div class="_sr"><div class="_sb"><div class="_n" id="as1">0</div><div class="_l">Слов собрано</div></div></div><div class="_aa" id="ag1"><span class="_ap" id="ae1">🍐</span><div class="_aw" id="aw1">ГРУША</div><p style="color:#888;">Собери слово из букв (нажимай по порядку):</p><div class="_ls" id="ls1"></div><p style="color:#888;margin-top:15px;">Доступные буквы:</p><div class="_lc" id="lc1"></div><p style="color:#888;margin-top:15px;">Раскрась звуки (нажми на каждую букву):</p><div class="_ar" id="ar1"></div><p style="color:#888;font-size:14px;" id="ah1">🔴 гласный &nbsp; 🔵 согласный твёрдый &nbsp; 🟢 согласный мягкий</p><p style="margin-top:10px;font-size:18px;color:#33691e;" id="af1"></p></div><div class="_br"><button class="_btn _o" onclick="_na()">🎲 Следующее слово</button><button class="_btn _r" onclick="_rs5()">🔄 Сброс</button></div></div>
+
+    <!-- Меню вкладок -->
+    <div class="tab-menu">
+        <button class="tab-btn active" onclick="switchTab(0)">🃏 Карточки-звуки</button>
+        <button class="tab-btn" onclick="switchTab(1)">🔍 Где звук?</button>
+        <button class="tab-btn" onclick="switchTab(2)">👏 Слоговая структура</button>
+        <button class="tab-btn" onclick="switchTab(3)">📖 Связная речь</button>
+        <button class="tab-btn" onclick="switchTab(4)">🔤 Звукобуквенный анализ</button>
+	<button class="tab-btn" onclick="switchTab(5)">📦 Классификация</button>
+    </div>
+
+    <!-- ИГРА 1 -->
+    <div class="tab-content active" id="tab0">
+        <h2 class="game-title">🃏 Фонетический слух — Угадай звук</h2>
+        <p class="game-desc">Нажимай на карточку, смотри какая буква, произноси звук. Взрослый подтверждает — правильно или нет.</p>
+        <div class="stars-line" id="stars1">
+            <span class="star-icon">⭐</span><span class="star-icon">⭐</span>
+            <span class="star-icon">⭐</span><span class="star-icon">⭐</span>
+            <span class="star-icon">⭐</span>
+        </div>
+        <div class="score-row">
+            <div class="score-box"><div class="num" id="flips1">0</div><div class="lbl">Открыто</div></div>
+            <div class="score-box"><div class="num" id="correct1">0</div><div class="lbl">Верно</div></div>
+        </div>
+        <div class="cards-grid" id="cardsGrid"></div>
+        <div class="btn-row">
+            <button class="btn btn-blue" onclick="speakCard1()">🔊 Озвучить</button>
+            <button class="btn btn-orange" onclick="shuffleCards1()">🎲 Новые карточки</button>
+            <button class="btn btn-red" onclick="resetGame1()">🔄 Сброс</button>
+        </div>
+    </div>
+
+    <!-- ИГРА 2 -->
+    <div class="tab-content" id="tab1">
+        <h2 class="game-title">🔍 Место звука в слове</h2>
+        <p class="game-desc">Посмотри на картинку. Где находится заданный звук — в начале, середине или конце слова? Нажми на нужный квадрат.</p>
+        <div class="stars-line" id="stars2">
+            <span class="star-icon">⭐</span><span class="star-icon">⭐</span>
+            <span class="star-icon">⭐</span><span class="star-icon">⭐</span>
+            <span class="star-icon">⭐</span>
+        </div>
+        <div class="score-row">
+            <div class="score-box"><div class="num" id="posScore">0</div><div class="lbl">Правильно</div></div>
+            <div class="score-box"><div class="num" id="posTotal">0</div><div class="lbl">Всего попыток</div></div>
+        </div>
+        <div class="position-game-area" id="posGame">
+            <span class="target-picture" id="posEmoji">🍎</span>
+            <div class="target-word" id="posWord">ЯБЛОКО</div>
+            <div class="target-question" id="posQuestion">Где звук [А]?</div>
+            <div class="sound-blocks">
+                <div class="sound-block" onclick="checkPosition('start')"><span class="pos-icon">🏁</span>Начало</div>
+                <div class="sound-block" onclick="checkPosition('middle')"><span class="pos-icon">🎯</span>Середина</div>
+                <div class="sound-block" onclick="checkPosition('end')"><span class="pos-icon">🏁</span>Конец</div>
+            </div>
+        </div>
+        <div class="btn-row">
+            <button class="btn btn-orange" onclick="newPositionTask()">🎲 Следующее слово</button>
+            <button class="btn btn-red" onclick="resetGame2()">🔄 Сброс</button>
+        </div>
+    </div>
+
+    <!-- ИГРА 3 -->
+    <div class="tab-content" id="tab2">
+        <h2 class="game-title">👏 Слоговая структура — Прохлопай слово</h2>
+        <p class="game-desc">Посмотри на картинку. Прохлопай слово по слогам, нажимая кнопки с ладошками. Потом собери слоговую схему.</p>
+        <div class="stars-line" id="stars3">
+            <span class="star-icon">⭐</span><span class="star-icon">⭐</span>
+            <span class="star-icon">⭐</span><span class="star-icon">⭐</span>
+            <span class="star-icon">⭐</span>
+        </div>
+        <div class="score-row">
+            <div class="score-box"><div class="num" id="sylScore">0</div><div class="lbl">Правильно</div></div>
+        </div>
+        <div class="syllable-area" id="sylGame">
+            <span class="syllable-item" id="sylEmoji">🍌</span>
+            <div class="syllable-name" id="sylWord">БАНАН</div>
+            <p style="color:#888;margin:8px 0;">Сколько слогов? Прохлопай:</p>
+            <div class="clap-buttons" id="clapButtons"></div>
+            <p style="color:#888;margin:15px 0 8px;">Собери схему (нажми нужное число квадратиков):</p>
+            <div class="syllable-blocks-row" id="sylBlocks"></div>
+            <p style="margin-top:10px;font-size:18px;color:#33691e;" id="sylFeedback"></p>
+        </div>
+        <div class="btn-row">
+            <button class="btn btn-orange" onclick="newSyllableTask()">🎲 Следующее слово</button>
+            <button class="btn btn-red" onclick="resetGame3()">🔄 Сброс</button>
+        </div>
+    </div>
+
+    <!-- ИГРА 4 -->
+    <div class="tab-content" id="tab3">
+        <h2 class="game-title">📖 Связная речь — Составь рассказ</h2>
+        <p class="game-desc">Выбери картинки по порядку и составь рассказ. Напиши или продиктуй его в окошке ниже.</p>
+        <div class="stars-line" id="stars4">
+            <span class="star-icon">⭐</span><span class="star-icon">⭐</span>
+            <span class="star-icon">⭐</span><span class="star-icon">⭐</span>
+            <span class="star-icon">⭐</span>
+        </div>
+        <div class="story-area" id="storyGame">
+            <p style="font-weight:bold;color:#33691e;">Выбери 4 картинки по порядку:</p>
+            <div class="story-pictures" id="storyPics"></div>
+            <p style="font-weight:bold;color:#33691e;margin-top:10px;">Твоя последовательность:</p>
+            <div class="story-sequence" id="storySeq">
+                <div class="story-slot">1</div>
+                <div class="story-slot">2</div>
+                <div class="story-slot">3</div>
+                <div class="story-slot">4</div>
+            </div>
+            <p style="font-weight:bold;color:#33691e;">Расскажи историю (напиши или продиктуй взрослому):</p>
+            <textarea class="story-textarea" id="storyText" placeholder="Например: Сначала я сорвал спелое яблоко с дерева. Потом помыл его в чистой воде..."></textarea>
+        </div>
+        <div class="btn-row">
+            <button class="btn btn-purple" onclick="readStory()">🔊 Озвучить рассказ</button>
+            <button class="btn btn-red" onclick="resetGame4()">🔄 Сброс</button>
+        </div>
+    </div>
+
+    <!-- ИГРА 5 -->
+    <div class="tab-content" id="tab4">
+        <h2 class="game-title">🔤 Звукобуквенный анализ — Собери слово</h2>
+        <p class="game-desc">Посмотри на картинку. Собери слово из букв. Потом раскрась звуки: гласный (красный) или согласный (синий/зелёный).</p>
+        <div class="stars-line" id="stars5">
+            <span class="star-icon">⭐</span><span class="star-icon">⭐</span>
+            <span class="star-icon">⭐</span><span class="star-icon">⭐</span>
+            <span class="star-icon">⭐</span>
+        </div>
+        <div class="score-row">
+            <div class="score-box"><div class="num" id="analysisScore">0</div><div class="lbl">Слов собрано</div></div>
+        </div>
+        <div class="analysis-area" id="analysisGame">
+            <span class="analysis-pic" id="analysisEmoji">🍐</span>
+            <div class="analysis-word" id="analysisWord">ГРУША</div>
+            <p style="color:#888;">Собери слово из букв (нажимай по порядку):</p>
+            <div class="letter-slots" id="letterSlots"></div>
+            <p style="color:#888;margin-top:15px;">Доступные буквы:</p>
+            <div class="letter-choices" id="letterChoices"></div>
+            <p style="color:#888;margin-top:15px;">Раскрась звуки (нажми на каждую букву):</p>
+            <div class="analysis-result" id="analysisResult"></div>
+            <p style="color:#888;font-size:14px;" id="analysisHint">🔴 гласный &nbsp; 🔵 согласный твёрдый &nbsp; 🟢 согласный мягкий</p>
+            <p style="margin-top:10px;font-size:18px;color:#33691e;" id="analysisFeedback"></p>
+        </div>
+        <div class="btn-row">
+            <button class="btn btn-orange" onclick="newAnalysisTask()">🎲 Следующее слово</button>
+            <button class="btn btn-red" onclick="resetGame5()">🔄 Сброс</button>
+        </div>
+    </div>
+    <!-- ИГРА 6: КЛАССИФИКАЦИЯ -->
+    <div class="tab-content" id="tab5">
+        <h2 class="game-title">📦 Классификация — Фрукты, Овощи, Ягоды</h2>
+        <p class="game-desc">Выбери картинку, потом нажми на нужную корзину.</p>
+
+        <div class="stars-line" id="stars6">
+            <span class="star-icon">⭐</span><span class="star-icon">⭐</span>
+            <span class="star-icon">⭐</span><span class="star-icon">⭐</span>
+            <span class="star-icon">⭐</span>
+        </div>
+
+        <div class="score-row">
+            <div class="score-box"><div class="num" id="classScore">0</div><div class="lbl">Правильно</div></div>
+            <div class="score-box"><div class="num" id="classTotal">0</div><div class="lbl">Всего</div></div>
+        </div>
+
+        <p style="text-align:center;color:#e65100;font-size:18px;font-weight:bold;margin:10px 0;" id="classTask">
+            Выбери все <b>ФРУКТЫ</b> и нажми на корзину 🧺
+        </p>
+
+        <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin:15px 0;" id="classItems"></div>
+
+        <div style="display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin:20px 0;">
+            <div id="basketFruit" onclick="checkClass('fruit')" style="width:130px;height:130px;border-radius:20px;border:4px dashed #ff9800;display:flex;align-items:center;justify-content:center;font-size:55px;cursor:pointer;background:white;flex-direction:column;transition:all 0.3s;">🧺<span style="font-size:14px;color:#e65100;font-weight:bold;">Фрукты</span></div>
+            <div id="basketVeg" onclick="checkClass('veg')" style="width:130px;height:130px;border-radius:20px;border:4px dashed #4caf50;display:flex;align-items:center;justify-content:center;font-size:55px;cursor:pointer;background:white;flex-direction:column;transition:all 0.3s;">🥬<span style="font-size:14px;color:#2e7d32;font-weight:bold;">Овощи</span></div>
+            <div id="basketBerry" onclick="checkClass('berry')" style="width:130px;height:130px;border-radius:20px;border:4px dashed #e91e63;display:flex;align-items:center;justify-content:center;font-size:55px;cursor:pointer;background:white;flex-direction:column;transition:all 0.3s;">🍓<span style="font-size:14px;color:#880e4f;font-weight:bold;">Ягоды</span></div>
+        </div>
+
+        <p style="text-align:center;font-size:18px;color:#33691e;min-height:30px;" id="classFeedback"></p>
+
+        <div class="btn-row">
+            <button class="btn btn-orange" onclick="newClassTask()">🎲 Новое задание</button>
+            <button class="btn btn-red" onclick="resetGame6()">🔄 Сброс</button>
+        </div>
+    </div>
+
     <script>
-        const _D = [
-            { e:'🍎', w:'ЯБЛОКО',   s:3, l:['Я','Б','Л','О','К','О'], q:['гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый','гласный'] },
-            { e:'🍐', w:'ГРУША',    s:2, l:['Г','Р','У','Ш','А'],     q:['согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый','гласный'] },
-            { e:'🍌', w:'БАНАН',    s:2, l:['Б','А','Н','А','Н'],     q:['согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый'] },
-            { e:'🍊', w:'АПЕЛЬСИН', s:3, l:['А','П','Е','Л','Ь','С','И','Н'], q:['гласный','согласный-мягкий','гласный','согласный-мягкий','мягкий-знак','согласный-мягкий','гласный','согласный-твёрдый'] },
-            { e:'🍋', w:'ЛИМОН',    s:2, l:['Л','И','М','О','Н'],     q:['согласный-мягкий','гласный','согласный-твёрдый','гласный','согласный-твёрдый'] },
-            { e:'🍇', w:'ВИНОГРАД', s:3, l:['В','И','Н','О','Г','Р','А','Д'], q:['согласный-мягкий','гласный','согласный-твёрдый','гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый'] },
-            { e:'🍑', w:'ПЕРСИК',   s:2, l:['П','Е','Р','С','И','К'], q:['согласный-мягкий','гласный','согласный-твёрдый','согласный-мягкий','гласный','согласный-твёрдый'] },
-            { e:'🍒', w:'ВИШНЯ',    s:2, l:['В','И','Ш','Н','Я'],     q:['согласный-мягкий','гласный','согласный-твёрдый','согласный-твёрдый','гласный'] },
-            { e:'🥕', w:'МОРКОВЬ',  s:2, l:['М','О','Р','К','О','В','Ь'], q:['согласный-твёрдый','гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-мягкий','мягкий-знак'] },
-            { e:'🥒', w:'ОГУРЕЦ',   s:3, l:['О','Г','У','Р','Е','Ц'], q:['гласный','согласный-твёрдый','гласный','согласный-мягкий','гласный','согласный-твёрдый'] },
-            { e:'🍅', w:'ПОМИДОР',  s:3, l:['П','О','М','И','Д','О','Р'], q:['согласный-твёрдый','гласный','согласный-мягкий','гласный','согласный-твёрдый','гласный','согласный-твёрдый'] },
-            { e:'🧅', w:'ЛУК',      s:1, l:['Л','У','К'],             q:['согласный-твёрдый','гласный','согласный-твёрдый'] },
-            { e:'🥔', w:'КАРТОФЕЛЬ',s:3, l:['К','А','Р','Т','О','Ф','Е','Л','Ь'], q:['согласный-твёрдый','гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-мягкий','мягкий-знак'] },
-            { e:'🍆', w:'БАКЛАЖАН', s:3, l:['Б','А','К','Л','А','Ж','А','Н'], q:['согласный-твёрдый','гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый'] },
-            { e:'🌽', w:'КУКУРУЗА', s:4, l:['К','У','К','У','Р','У','З','А'], q:['согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый','гласный'] },
-            { e:'🍉', w:'АРБУЗ',    s:2, l:['А','Р','Б','У','З'],     q:['гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый'] },
-            { e:'🍓', w:'КЛУБНИКА', s:3, l:['К','Л','У','Б','Н','И','К','А'], q:['согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый','согласный-мягкий','гласный','согласный-твёрдый','гласный'] },
-            { e:'🍍', w:'АНАНАС',   s:3, l:['А','Н','А','Н','А','С'], q:['гласный','согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый'] },
+        // ╔══════════════════════════════════════════════════════╗
+        // ║           ОБЩИЕ ДАННЫЕ: ОВОЩИ И ФРУКТЫ             ║
+        // ╚══════════════════════════════════════════════════════╝
+
+
+        const fruitVegData = [
+	    { emoji:'🍫', word:'ШОКОЛАД',  syllables:3, letters:['Ш','О','К','О','Л','А','Д'], sounds:['согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый'] },
+	    { emoji:'🦒', word:'ЖИРАФ',    syllables:2, letters:['Ж','И','Р','А','Ф'],     sounds:['согласный-твёрдый','гласный','согласный-мягкий','гласный','согласный-твёрдый'] },
+	    { emoji:'🐟', word:'РЫБА',     syllables:2, letters:['Р','Ы','Б','А'],         sounds:['согласный-твёрдый','гласный','согласный-твёрдый','гласный'] },
+	    { emoji:'🦁', word:'ЛЕВ',      syllables:1, letters:['Л','Е','В'],             sounds:['согласный-мягкий','гласный','согласный-твёрдый'] },
+	    { emoji:'☀️', word:'СОЛНЦЕ',   syllables:2, letters:['С','О','Л','Н','Ц','Е'], sounds:['согласный-твёрдый','гласный','согласный-твёрдый','согласный-твёрдый','согласный-твёрдый','гласный'] },
+ 	   { emoji:'🦓', word:'ЗЕБРА',    syllables:2, letters:['З','Е','Б','Р','А'],     sounds:['согласный-мягкий','гласный','согласный-твёрдый','согласный-твёрдый','гласный'] },
+  	  { emoji:'🌸', word:'ЦВЕТОК',   syllables:2, letters:['Ц','В','Е','Т','О','К'], sounds:['согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый'] },
+            { emoji:'🍎', word:'ЯБЛОКО',   syllables:3, letters:['Я','Б','Л','О','К','О'], sounds:['гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый','гласный'] },
+            { emoji:'🍐', word:'ГРУША',    syllables:2, letters:['Г','Р','У','Ш','А'],     sounds:['согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый','гласный'] },
+            { emoji:'🍌', word:'БАНАН',    syllables:2, letters:['Б','А','Н','А','Н'],     sounds:['согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый'] },
+            { emoji:'🍊', word:'АПЕЛЬСИН', syllables:3, letters:['А','П','Е','Л','Ь','С','И','Н'], sounds:['гласный','согласный-мягкий','гласный','согласный-мягкий','мягкий-знак','согласный-мягкий','гласный','согласный-твёрдый'] },
+            { emoji:'🍋', word:'ЛИМОН',    syllables:2, letters:['Л','И','М','О','Н'],     sounds:['согласный-мягкий','гласный','согласный-твёрдый','гласный','согласный-твёрдый'] },
+            { emoji:'🍇', word:'ВИНОГРАД', syllables:3, letters:['В','И','Н','О','Г','Р','А','Д'], sounds:['согласный-мягкий','гласный','согласный-твёрдый','гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый'] },
+            { emoji:'🍑', word:'ПЕРСИК',   syllables:2, letters:['П','Е','Р','С','И','К'], sounds:['согласный-мягкий','гласный','согласный-твёрдый','согласный-мягкий','гласный','согласный-твёрдый'] },
+	    { emoji:'🍒', word:'ВИШНЯ', syllables:2, letters:['В','И','Ш','Н','Я'], sounds:['согласный-мягкий','гласный','согласный-твёрдый','согласный-мягкий','гласный'] },
+            { emoji:'🥕', word:'МОРКОВЬ',  syllables:2, letters:['М','О','Р','К','О','В','Ь'], sounds:['согласный-твёрдый','гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-мягкий','мягкий-знак'] },
+            { emoji:'🥒', word:'ОГУРЕЦ',   syllables:3, letters:['О','Г','У','Р','Е','Ц'], sounds:['гласный','согласный-твёрдый','гласный','согласный-мягкий','гласный','согласный-твёрдый'] },
+            { emoji:'🍅', word:'ПОМИДОР',  syllables:3, letters:['П','О','М','И','Д','О','Р'], sounds:['согласный-твёрдый','гласный','согласный-мягкий','гласный','согласный-твёрдый','гласный','согласный-твёрдый'] },
+            { emoji:'🧅', word:'ЛУК',      syllables:1, letters:['Л','У','К'],             sounds:['согласный-твёрдый','гласный','согласный-твёрдый'] },
+            { emoji:'🥔', word:'КАРТОФЕЛЬ',syllables:3, letters:['К','А','Р','Т','О','Ф','Е','Л','Ь'], sounds:['согласный-твёрдый','гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-мягкий','мягкий-знак'] },
+            { emoji:'🍆', word:'БАКЛАЖАН', syllables:3, letters:['Б','А','К','Л','А','Ж','А','Н'], sounds:['согласный-твёрдый','гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый'] },
+            { emoji:'🌽', word:'КУКУРУЗА', syllables:4, letters:['К','У','К','У','Р','У','З','А'], sounds:['согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый','гласный'] },
+            { emoji:'🍉', word:'АРБУЗ',    syllables:2, letters:['А','Р','Б','У','З'],     sounds:['гласный','согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый'] },
+            { emoji:'🍓', word:'КЛУБНИКА', syllables:3, letters:['К','Л','У','Б','Н','И','К','А'], sounds:['согласный-твёрдый','согласный-твёрдый','гласный','согласный-твёрдый','согласный-мягкий','гласный','согласный-твёрдый','гласный'] },
+            { emoji:'🍍', word:'АНАНАС',   syllables:3, letters:['А','Н','А','Н','А','С'], sounds:['гласный','согласный-твёрдый','гласный','согласный-твёрдый','гласный','согласный-твёрдый'] },
         ];
-        function _sw(i) {
-            document.querySelectorAll('._tb').forEach((b,idx)=>{ b.classList.toggle('_a', idx===i); });
-            document.querySelectorAll('._tc').forEach((t,idx)=>{ t.classList.toggle('_a', idx===i); });
-            if(i===0) _r1();
+
+        // ╔══════════════════════════════════════════════════════╗
+        // ║              ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК                  ║
+        // ╚══════════════════════════════════════════════════════╝
+
+        function switchTab(index) {
+            // Убираем active со всех кнопок
+            const allBtns = document.querySelectorAll('.tab-btn');
+            allBtns.forEach(function(btn) { btn.classList.remove('active'); });
+            // Ставим active на нужную кнопку
+            allBtns[index].classList.add('active');
+
+            // Убираем active со всех вкладок
+            const allTabs = document.querySelectorAll('.tab-content');
+            allTabs.forEach(function(tab) { tab.classList.remove('active'); });
+            // Показываем нужную вкладку
+            document.getElementById('tab' + index).classList.add('active');
+
+            // Если переключились на игру 1 — перерисовать карточки
+            if (index === 0) {
+                renderCards1();
+            }
+	    if (index === 5) {
+    	    newClassTask();
+	    }
         }
-        let _a1=[], _b1=[], _c1=0, _d1=0, _e1=null;
-        function _p1(){ return [..._D].sort(()=>Math.random()-0.5).slice(0,8); }
-        function _r1(){
-            const g=document.getElementById('g1');
-            g.innerHTML='';
-            _a1.forEach((c,i)=>{
-                const w=document.createElement('div');
-                w.className='_cw';
-                w.dataset.i=i;
-                w.onclick=()=>{ _f1(i,w); };
-                const ci=document.createElement('div');
-                ci.className='_ci';
-                const cf=document.createElement('div');
-                cf.className='_cf';
-                cf.innerHTML='<span class="_e">'+c.e+'</span><span class="_fn">'+c.w+'</span>';
-                const cb=document.createElement('div');
-                cb.className='_cb';
-                cb.innerHTML='<span class="_bl">'+c.l[0]+'</span><span class="_sh">звук ['+c.q[0]+']</span><span class="_sw">'+c.w+'</span>';
-                ci.appendChild(cf); ci.appendChild(cb); w.appendChild(ci); g.appendChild(w);
+
+        // ╔══════════════════════════════════════════════════════╗
+        // ║     ИГРА 1: ФОНЕТИЧЕСКИЙ СЛУХ (КАРТОЧКИ)         ║
+        // ╚══════════════════════════════════════════════════════╝
+
+        let game1Cards = [];
+        let game1Flipped = [];
+        let game1FlipCount = 0;
+        let game1CorrectCount = 0;
+        let game1CurrentIndex = null;
+
+        function pickCards1() {
+            let shuffled = [...fruitVegData].sort(function() { return Math.random() - 0.5; });
+            return shuffled.slice(0, 8);
+        }
+
+        function renderCards1() {
+            const grid = document.getElementById('cardsGrid');
+            grid.innerHTML = '';
+
+            game1Cards.forEach(function(card, i) {
+                const wrap = document.createElement('div');
+                wrap.className = 'card-wrap';
+                wrap.setAttribute('data-index', i);
+                wrap.onclick = function() { flipCard1(i, wrap); };
+
+                const inner = document.createElement('div');
+                inner.className = 'card-inner-flip';
+
+                const front = document.createElement('div');
+                front.className = 'card-face';
+                front.innerHTML = '<span class="fruit-emoji">' + card.emoji + '</span><span class="fruit-name">' + card.word + '</span>';
+
+                const back = document.createElement('div');
+                back.className = 'card-backface';
+                back.innerHTML = '<span class="big-letter">' + card.letters[0] + '</span><span class="sound-hint">звук [' + card.sounds[0] + ']</span><span class="sample-word">' + card.word + '</span>';
+
+                inner.appendChild(front);
+                inner.appendChild(back);
+                wrap.appendChild(inner);
+                grid.appendChild(wrap);
             });
         }
-        function _f1(i,w){
-            if(_b1.includes(i)){ w.classList.remove('_op'); _b1=_b1.filter(x=>x!==i); _e1=null; return; }
-            w.classList.add('_op'); _b1.push(i); _c1++; _e1=i; document.getElementById('f1').textContent=_c1;
-            setTimeout(()=>{
-                const c=_a1[i];
-                if(confirm('Ребёнок открыл карточку '+c.e+' '+c.w+'\nЭто буква "'+c.l[0]+'" — звук ['+c.q[0]+']\n\nОн назвал звук правильно?\nНажми "ОК" если ДА, "Отмена" если НЕТ.')){
-                    _d1++; document.getElementById('c1').textContent=_d1; _u1(); _cfetti(w);
-                }
-            },400);
-        }
-        function _u1(){
-            const n=Math.min(Math.floor(_d1/2),5);
-            document.querySelectorAll('#s1 ._star').forEach((s,i)=>{ s.classList.toggle('_on', i<n); });
-            if(n===5){ _bigC(); setTimeout(()=>alert('🎉 Ура! Все звёзды собраны!'),500); }
-        }
-        function _sp1(){
-            if(_e1===null||!_b1.includes(_e1)){ alert('Сначала открой карточку!'); return; }
-            const c=_a1[_e1], t=c.q[0]+' — '+c.w;
-            if('speechSynthesis' in window){ const u=new SpeechSynthesisUtterance(t); u.lang='ru-RU'; u.rate=0.7; u.pitch=1.2; speechSynthesis.speak(u); }
-            else alert('Браузер не поддерживает озвучку. Используй Google Chrome.');
-        }
-        function _sh1(){ _a1=_p1(); _b1=[]; _e1=null; _r1(); }
-        function _rs1(){ _c1=0; _d1=0; _b1=[]; _e1=null; document.getElementById('f1').textContent='0'; document.getElementById('c1').textContent='0'; document.querySelectorAll('#s1 ._star').forEach(s=>s.classList.remove('_on')); _a1=_p1(); _r1(); }
 
-        let _ps=0, _pt=0, _pc=null, _psnd='', _ppos='';
-        function _np(){
-            _pc=_D[Math.floor(Math.random()*_D.length)];
-            const w=_pc.w, si=Math.floor(Math.random()*_pc.q.length);
-            _psnd=_pc.q[si]; const l=_pc.l[si];
-            _ppos=si===0?'start':si===_pc.l.length-1?'end':'middle';
-            document.getElementById('pe1').textContent=_pc.e;
-            document.getElementById('pw1').textContent=w;
-            document.getElementById('pq1').textContent='Где звук ['+_psnd+'] (буква "'+l+'")?';
-            document.querySelectorAll('#pg1 ._sb2').forEach(b=>b.classList.remove('_cp','_wp'));
+        function flipCard1(index, wrap) {
+            if (game1Flipped.indexOf(index) !== -1) {
+                wrap.classList.remove('opened');
+                game1Flipped = game1Flipped.filter(function(i) { return i !== index; });
+                game1CurrentIndex = null;
+                return;
+            }
+            wrap.classList.add('opened');
+            game1Flipped.push(index);
+            game1FlipCount++;
+            game1CurrentIndex = index;
+            document.getElementById('flips1').textContent = game1FlipCount;
+
+            setTimeout(function() {
+                const card = game1Cards[index];
+                const ok = confirm('Ребёнок открыл карточку ' + card.emoji + ' ' + card.word + '\nЭто буква "' + card.letters[0] + '" — звук [' + card.sounds[0] + ']\n\nОн назвал звук правильно?\nНажми "ОК" если ДА, "Отмена" если НЕТ.');
+                if (ok) {
+                    game1CorrectCount++;
+                    document.getElementById('correct1').textContent = game1CorrectCount;
+                    updateStars1();
+                    spawnConfetti(wrap);
+                }
+            }, 400);
         }
-        function _cp(a){
-            if(!_pc)return;
-            _pt++; document.getElementById('pt1').textContent=_pt;
-            const bs=document.querySelectorAll('#pg1 ._sb2');
-            bs.forEach(b=>b.classList.remove('_cp','_wp'));
-            let cb;
-            if(a==='start') cb=bs[0]; else if(a==='middle') cb=bs[1]; else cb=bs[2];
-            if(a===_ppos){ _ps++; document.getElementById('ps1').textContent=_ps; cb.classList.add('_cp'); _u2(); _cfetti(cb); setTimeout(_np,1200); }
-            else {
-                cb.classList.add('_wp');
-                let crb; if(_ppos==='start') crb=bs[0]; else if(_ppos==='middle') crb=bs[1]; else crb=bs[2];
-                setTimeout(()=>crb.classList.add('_cp'),500);
+
+        function updateStars1() {
+            const starsToLight = Math.min(Math.floor(game1CorrectCount / 2), 5);
+            const stars = document.getElementById('stars1').querySelectorAll('.star-icon');
+            stars.forEach(function(star, i) {
+                if (i < starsToLight) star.classList.add('on');
+            });
+            if (starsToLight === 5) {
+                spawnBigConfetti();
+                setTimeout(function() { alert('🎉 Ура! Все звёзды собраны!'); }, 500);
             }
         }
-        function _u2(){
-            const n=Math.min(Math.floor(_ps/2),5);
-            document.querySelectorAll('#s2 ._star').forEach((s,i)=>{ s.classList.toggle('_on', i<n); });
-            if(n===5){ _bigC(); setTimeout(()=>alert('🎉 Все звёзды собраны!'),500); }
-        }
-        function _rs2(){ _ps=0; _pt=0; document.getElementById('ps1').textContent='0'; document.getElementById('pt1').textContent='0'; document.querySelectorAll('#s2 ._star').forEach(s=>s.classList.remove('_on')); _np(); }
 
-        let _ssc=0, _scur=null, _scc=0, _sbc=0;
-        function _ns(){
-            _scur=_D[Math.floor(Math.random()*_D.length)];
-            _scc=0; _sbc=0;
-            document.getElementById('se1').textContent=_scur.e;
-            document.getElementById('sw1').textContent=_scur.w;
-            document.getElementById('sf1').textContent='';
-            const cd=document.getElementById('cb1');
-            cd.innerHTML='';
-            for(let i=0;i<5;i++){ const b=document.createElement('button'); b.className='_cl'; b.textContent='👏'; b.onclick=()=>{ if(_scc<5){_scc++; b.classList.add('_u');} }; cd.appendChild(b); }
-            const bd=document.getElementById('sb1');
-            bd.innerHTML='';
-            for(let i=0;i<5;i++){ const b=document.createElement('div'); b.className='_sbl'; b.textContent='⬜'; b.onclick=()=>{ if(_sbc<5){_sbc++; b.classList.add('_f'); b.textContent='🟩'; } if(_sbc===_scur.s){ _ssc++; document.getElementById('ss1').textContent=_ssc; document.getElementById('sf1').textContent='✅ Правильно! '+_scur.w+' — '+_scur.s+' слог(а)!'; _u3(); _cfetti(b); setTimeout(_ns,1500); } else if(_sbc>_scur.s){ document.getElementById('sf1').textContent='❌ Много! В слове "'+_scur.w+'" — '+_scur.s+' слог(а). Попробуй снова.'; _sbc=0; bd.querySelectorAll('._sbl').forEach(x=>{x.classList.remove('_f'); x.textContent='⬜';}); } }; bd.appendChild(b); }
+        function speakCard1() {
+            if (game1CurrentIndex === null || game1Flipped.indexOf(game1CurrentIndex) === -1) {
+                alert('Сначала открой карточку!');
+                return;
+            }
+            const card = game1Cards[game1CurrentIndex];
+            const text = card.sounds[0] + ' — ' + card.word;
+            if ('speechSynthesis' in window) {
+                const u = new SpeechSynthesisUtterance(text);
+                u.lang = 'ru-RU';
+                u.rate = 0.7;
+                u.pitch = 1.2;
+                speechSynthesis.speak(u);
+            } else {
+                alert('Браузер не поддерживает озвучку. Используй Google Chrome.');
+            }
         }
-        function _u3(){
-            const n=Math.min(Math.floor(_ssc/2),5);
-            document.querySelectorAll('#s3 ._star').forEach((s,i)=>{ s.classList.toggle('_on', i<n); });
-            if(n===5){ _bigC(); setTimeout(()=>alert('🎉 Все звёзды собраны!'),500); }
-        }
-        function _rs3(){ _ssc=0; document.getElementById('ss1').textContent='0'; document.querySelectorAll('#s3 ._star').forEach(s=>s.classList.remove('_on')); _ns(); }
 
-        let _sel=[];
-        const _pics=[{e:'🌳',l:'Дерево'},{e:'🍎',l:'Яблоко'},{e:'🧺',l:'Корзина'},{e:'💧',l:'Вода'},{e:'🔪',l:'Нож'},{e:'🍽️',l:'Тарелка'},{e:'👦',l:'Мальчик'},{e:'👧',l:'Девочка'}];
-        function _rp(){
-            const d=document.getElementById('sp1');
-            d.innerHTML='';
-            _pics.forEach((p,i)=>{
-                const el=document.createElement('div');
-                el.className='_spc';
-                el.innerHTML='<span style="font-size:55px;">'+p.e+'</span><span class="_pl">'+p.l+'</span>';
-                el.onclick=()=>{ if(_sel.length>=4)return; if(el.classList.contains('_sel'))return; el.classList.add('_sel'); _sel.push(p); _updSlots(); };
-                d.appendChild(el);
+        function shuffleCards1() {
+            game1Cards = pickCards1();
+            game1Flipped = [];
+            game1CurrentIndex = null;
+            renderCards1();
+        }
+
+        function resetGame1() {
+            game1FlipCount = 0;
+            game1CorrectCount = 0;
+            game1Flipped = [];
+            game1CurrentIndex = null;
+            document.getElementById('flips1').textContent = '0';
+            document.getElementById('correct1').textContent = '0';
+            const stars = document.getElementById('stars1').querySelectorAll('.star-icon');
+            stars.forEach(function(s) { s.classList.remove('on'); });
+            game1Cards = pickCards1();
+            renderCards1();
+        }
+
+        // ╔══════════════════════════════════════════════════════╗
+        // ║        ИГРА 2: МЕСТО ЗВУКА В СЛОВЕ               ║
+        // ╚══════════════════════════════════════════════════════╝
+
+        let posScore = 0;
+        let posTotal = 0;
+        let posCurrent = null;
+        let posSound = '';
+        let posSoundPosition = '';
+
+        function newPositionTask() {
+            posCurrent = fruitVegData[Math.floor(Math.random() * fruitVegData.length)];
+            const word = posCurrent.word;
+            // Выбираем случайный звук из слова
+            const soundIndex = Math.floor(Math.random() * posCurrent.sounds.length);
+            posSound = posCurrent.sounds[soundIndex];
+            const letter = posCurrent.letters[soundIndex];
+
+            // Определяем позицию
+            if (soundIndex === 0) posSoundPosition = 'start';
+            else if (soundIndex === posCurrent.letters.length - 1) posSoundPosition = 'end';
+            else posSoundPosition = 'middle';
+
+            document.getElementById('posEmoji').textContent = posCurrent.emoji;
+            document.getElementById('posWord').textContent = word;
+            document.getElementById('posQuestion').textContent = 'Где звук [' + posSound + '] (буква "' + letter + '")?';
+
+            // Убираем подсветку с кнопок
+            const blocks = document.querySelectorAll('#posGame .sound-block');
+            blocks.forEach(function(b) { b.classList.remove('correct-pick', 'wrong-pick'); });
+        }
+
+        function checkPosition(answer) {
+            if (!posCurrent) return;
+            posTotal++;
+            document.getElementById('posTotal').textContent = posTotal;
+
+            const blocks = document.querySelectorAll('#posGame .sound-block');
+            blocks.forEach(function(b) { b.classList.remove('correct-pick', 'wrong-pick'); });
+
+            let clickedBlock;
+            if (answer === 'start') clickedBlock = blocks[0];
+            else if (answer === 'middle') clickedBlock = blocks[1];
+            else clickedBlock = blocks[2];
+
+            if (answer === posSoundPosition) {
+                posScore++;
+                document.getElementById('posScore').textContent = posScore;
+                clickedBlock.classList.add('correct-pick');
+                updateStars2();
+                spawnConfetti(clickedBlock);
+                setTimeout(newPositionTask, 1200);
+            } else {
+                clickedBlock.classList.add('wrong-pick');
+                // Подсвечиваем правильный
+                let correctBlock;
+                if (posSoundPosition === 'start') correctBlock = blocks[0];
+                else if (posSoundPosition === 'middle') correctBlock = blocks[1];
+                else correctBlock = blocks[2];
+                setTimeout(function() { correctBlock.classList.add('correct-pick'); }, 500);
+            }
+        }
+
+        function updateStars2() {
+            const starsToLight = Math.min(Math.floor(posScore / 2), 5);
+            const stars = document.getElementById('stars2').querySelectorAll('.star-icon');
+            stars.forEach(function(star, i) {
+                if (i < starsToLight) star.classList.add('on');
             });
+            if (starsToLight === 5) {
+                spawnBigConfetti();
+                setTimeout(function() { alert('🎉 Все звёзды собраны!'); }, 500);
+            }
         }
-        function _updSlots(){
-            document.querySelectorAll('#ssq1 ._sslot').forEach((s,i)=>{ if(i<_sel.length){ s.textContent=_sel[i].e; s.classList.add('_fs'); } else { s.textContent=i+1; s.classList.remove('_fs'); } });
-        }
-        function _rd(){
-            const t=document.getElementById('stxt1').value.trim();
-            if(!t){ alert('Напиши рассказ в окошке!'); return; }
-            if('speechSynthesis' in window){ const u=new SpeechSynthesisUtterance(t); u.lang='ru-RU'; u.rate=0.8; speechSynthesis.speak(u); }
-            else alert('Браузер не поддерживает озвучку.');
-        }
-        function _rs4(){ _sel=[]; document.querySelectorAll('#sp1 ._spc').forEach(p=>p.classList.remove('_sel')); _updSlots(); document.getElementById('stxt1').value=''; }
 
-        let _as=0, _ac=null, _afill=[], _ashuf=[], _awb=false, _asp=[];
-        const _stypes=[{id:'vowel',name:'Гласный',color:'#f44336',css:'_v'},{id:'consonant-hard',name:'Согласный твёрдый',color:'#2196f3',css:'_ch'},{id:'consonant-soft',name:'Согласный мягкий',color:'#4caf50',css:'_cs'},{id:'no-sound',name:'Не обозначает звука',color:'#9e9e9e',css:'_ns'}];
-        function _shuf(a){ const b=[...a]; for(let i=b.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; } return b; }
-        function _na(){
-            _ac=_D[Math.floor(Math.random()*_D.length)];
-            _afill=new Array(_ac.l.length).fill(null);
-            _awb=false; _asp=new Array(_ac.l.length).fill(null);
-            document.getElementById('ae1').textContent=_ac.e;
-            document.getElementById('aw1').textContent='';
-            document.getElementById('af1').textContent='';
-            document.getElementById('ar1').innerHTML='';
-            const sd=document.getElementById('ls1');
-            sd.innerHTML='';
-            _ac.l.forEach((l,i)=>{ const s=document.createElement('div'); s.className='_lslot'; s.dataset.s=i; s.textContent='?'; s.style.color='#bdbdbd'; s.onclick=()=>{ if(_awb)return; if(_afill[i]!==null){ const rt=_afill[i]; if(_lcnt[rt]!==undefined)_lcnt[rt]--; _afill[i]=null; s.textContent='?'; s.style.color='#bdbdbd'; s.classList.remove('_fl'); const chs=document.getElementById('lc1').querySelectorAll('._lch'); for(let c=0;c<chs.length;c++){ if(chs[c].textContent===rt && chs[c].classList.contains('_ul')){ chs[c].classList.remove('_ul'); break; } } } }; sd.appendChild(s); });
-            _ashuf=_shuf(_ac.l);
-            const cd=document.getElementById('lc1');
-            cd.innerHTML='';
-            const _lcnt={};
-            _ac.l.forEach(l=>{ if(!_lcnt[l])_lcnt[l]=0; _lcnt[l]++; });
-            const used={}; for(const k in _lcnt)used[k]=0;
-            _ashuf.forEach(l=>{
-                const b=document.createElement('div');
-                b.className='_lch';
-                b.textContent=l;
-                b.onclick=()=>{
-                    if(_awb)return;
-                    if(b.classList.contains('_ul'))return;
-                    if(used[l]>=(_lcnt[l]||0))return;
-                    const idx=_afill.indexOf(null);
-                    if(idx===-1)return;
-                    _afill[idx]=l; used[l]++;
-                    b.classList.add('_ul');
-                    const slots=document.getElementById('ls1').querySelectorAll('._lslot');
-                    slots[idx].textContent=l;
-                    slots[idx].style.color='#2e7d32';
-                    slots[idx].classList.add('_fl');
-                    if(_afill.indexOf(null)===-1){
-                        const wd=_afill.join('');
-                        if(wd===_ac.w){ _awb=true; document.getElementById('aw1').textContent=_ac.w; document.getElementById('af1').textContent='✅ Слово собрано! Теперь раскрась каждую букву — выбери цвет и нажми на букву.'; _renderColor(); }
-                        else { document.getElementById('af1').textContent='❌ Получилось: '+wd+'. Нажми на слоты чтобы убрать буквы и попробуй снова.'; }
+        function resetGame2() {
+            posScore = 0;
+            posTotal = 0;
+            document.getElementById('posScore').textContent = '0';
+            document.getElementById('posTotal').textContent = '0';
+            const stars = document.getElementById('stars2').querySelectorAll('.star-icon');
+            stars.forEach(function(s) { s.classList.remove('on'); });
+            newPositionTask();
+        }
+
+        // ╔══════════════════════════════════════════════════════╗
+        // ║        ИГРА 3: СЛОГОВАЯ СТРУКТУРА                ║
+        // ╚══════════════════════════════════════════════════════╝
+
+        let sylScore = 0;
+        let sylCurrent = null;
+        let sylClapCount = 0;
+        let sylBlockCount = 0;
+
+        function newSyllableTask() {
+            sylCurrent = fruitVegData[Math.floor(Math.random() * fruitVegData.length)];
+            sylClapCount = 0;
+            sylBlockCount = 0;
+
+            document.getElementById('sylEmoji').textContent = sylCurrent.emoji;
+            document.getElementById('sylWord').textContent = sylCurrent.word;
+            document.getElementById('sylFeedback').textContent = '';
+
+            // Создаём кнопки-ладошки (максимум 5)
+            const clapDiv = document.getElementById('clapButtons');
+            clapDiv.innerHTML = '';
+            for (let i = 0; i < 5; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'clap-btn';
+                btn.textContent = '👏';
+                btn.onclick = function() {
+                    if (sylClapCount < 5) {
+                        sylClapCount++;
+                        btn.classList.add('used');
                     }
                 };
-                cd.appendChild(b);
-            });
-            document.getElementById('ar1').innerHTML='';
-        }
-        function _renderColor(){
-            const rd=document.getElementById('ar1');
-            rd.innerHTML='';
-            let _selColor=null;
-            const pal=document.createElement('div');
-            pal.style.cssText='display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;';
-            pal.innerHTML='<p style="width:100%;color:#888;margin-bottom:5px;">Выбери цвет, потом нажми на букву:</p>';
-            _stypes.forEach(st=>{
-                const cb=document.createElement('div');
-                cb.className='_sc '+st.css;
-                cb.textContent=st.name;
-                cb.style.cssText='cursor:pointer;padding:10px 18px;font-size:14px;border-radius:20px;font-weight:bold;transition:all 0.2s;user-select:none;';
-                cb.dataset.sid=st.id;
-                cb.onclick=()=>{ _selColor=st.id; pal.querySelectorAll('._sc').forEach(b=>{b.style.outline='none';b.style.transform='scale(1)';}); cb.style.outline='3px solid #000'; cb.style.transform='scale(1.08)'; document.getElementById('af1').textContent='Выбран: «'+st.name+'». Нажимай на буквы чтобы раскрасить.'; };
-                pal.appendChild(cb);
-            });
-            rd.appendChild(pal);
-            const lr=document.createElement('div');
-            lr.style.cssText='display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:15px 0;';
-            _ac.l.forEach((l,i)=>{
-                const lb=document.createElement('div');
-                lb.textContent=l;
-                lb.style.cssText='width:60px;height:60px;border-radius:15px;border:3px dashed #bdbdbd;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:bold;background:white;cursor:pointer;transition:all 0.3s;';
-                lb.dataset.li=i;
-                if(_asp[i]!==null){ const p=_stypes.find(s=>s.id===_asp[i]); if(p){ lb.style.background=p.color; lb.style.color='white'; lb.style.borderColor=p.color; lb.style.borderStyle='solid'; } }
-                lb.onclick=()=>{
-                    if(_selColor===null){ document.getElementById('af1').textContent='Сначала выбери цвет сверху!'; return; }
-                    _asp[i]=_selColor;
-                    const p=_stypes.find(s=>s.id===_selColor);
-                    lb.style.background=p.color; lb.style.color='white'; lb.style.borderColor=p.color; lb.style.borderStyle='solid'; lb.style.transform='scale(1.1)';
-                    setTimeout(()=>lb.style.transform='scale(1)',200);
-                    document.getElementById('af1').textContent='Буква «'+l+'» раскрашена. Раскрась все буквы и нажми «Проверить».';
-                    if(_asp.indexOf(null)===-1) document.getElementById('af1').textContent='Все буквы раскрашены! Нажми «Проверить раскраску».';
+                clapDiv.appendChild(btn);
+            }
+
+            // Создаём блоки для схемы
+            const blocksDiv = document.getElementById('sylBlocks');
+            blocksDiv.innerHTML = '';
+            for (let i = 0; i < 5; i++) {
+                const block = document.createElement('div');
+                block.className = 'syllable-block';
+                block.textContent = '⬜';
+                block.onclick = function() {
+                    if (sylBlockCount < 5) {
+                        sylBlockCount++;
+                        block.classList.add('filled');
+                        block.textContent = '🟩';
+                    }
+                    // Проверка
+                    if (sylBlockCount === sylCurrent.syllables) {
+                        sylScore++;
+                        document.getElementById('sylScore').textContent = sylScore;
+                        document.getElementById('sylFeedback').textContent = '✅ Правильно! ' + sylCurrent.word + ' — ' + sylCurrent.syllables + ' слог(а)!';
+                        updateStars3();
+                        spawnConfetti(block);
+                        setTimeout(newSyllableTask, 1500);
+                    } else if (sylBlockCount > sylCurrent.syllables) {
+                        document.getElementById('sylFeedback').textContent = '❌ Много! В слове "' + sylCurrent.word + '" — ' + sylCurrent.syllables + ' слог(а). Попробуй снова.';
+                        // Сброс
+                        sylBlockCount = 0;
+                        const allBlocks = blocksDiv.querySelectorAll('.syllable-block');
+                        allBlocks.forEach(function(b) { b.classList.remove('filled'); b.textContent = '⬜'; });
+                    }
                 };
-                lr.appendChild(lb);
-            });
-            rd.appendChild(lr);
-            const chk=document.createElement('button');
-            chk.textContent='✅ Проверить раскраску';
-            chk.className='_btn _g';
-            chk.style.marginTop='15px';
-            chk.onclick=()=>{ _chkColor(); };
-            rd.appendChild(chk);
-        }
-        function _chkColor(){
-            let ok=true, det=[];
-            _ac.l.forEach((l,i)=>{
-                const c=_ac.q[i];
-                let cid;
-                if(c==='гласный') cid='vowel';
-                else if(c==='согласный-твёрдый') cid='consonant-hard';
-                else if(c==='согласный-мягкий') cid='consonant-soft';
-                else if(c==='мягкий-знак'||c==='твёрдый-знак') cid='no-sound';
-                else cid='vowel';
-                const p=_asp[i], isOk=p===cid;
-                if(!isOk) ok=false;
-                const pn=_stypes.find(s=>s.id===p);
-                det.push({l,picked:pn?pn.name:'не выбрано',correct:c,isOk});
-            });
-            const rd=document.getElementById('ar1');
-            rd.querySelectorAll('._sum').forEach(el=>el.remove());
-            if(ok){
-                _as++; document.getElementById('as1').textContent=_as; _u5(); _cfetti(rd); document.getElementById('af1').textContent='🎉 Всё верно! Нажми «Следующее слово».';
-                const s=document.createElement('div');
-                s.className='_sum';
-                s.style.cssText='margin-top:15px;padding:10px;background:#e8f5e9;border-radius:15px;';
-                s.innerHTML='<strong>✅ Правильно:</strong><br>'+det.map(d=>'«'+d.l+'» = '+d.correct).join(' | ');
-                rd.appendChild(s);
-            } else {
-                document.getElementById('af1').textContent='❌ Есть ошибки! Смотри подсказку и исправляй.';
-                const s=document.createElement('div');
-                s.className='_sum';
-                s.style.cssText='margin-top:15px;padding:10px;background:#ffebee;border-radius:15px;';
-                s.innerHTML='<strong>❌ Ошибки:</strong><br>'+det.filter(d=>!d.isOk).map(d=>'«'+d.l+'» — выбрано «'+d.picked+'», нужно «'+d.correct+'»').join('<br>');
-                rd.appendChild(s);
+                blocksDiv.appendChild(block);
             }
         }
-        function _u5(){
-            const n=Math.min(Math.floor(_as/2),5);
-            document.querySelectorAll('#s5 ._star').forEach((s,i)=>{ s.classList.toggle('_on', i<n); });
-            if(n===5){ _bigC(); setTimeout(()=>alert('🎉 Все звёзды собраны!'),500); }
-        }
-        function _rs5(){ _as=0; _awb=false; _asp=[]; document.getElementById('as1').textContent='0'; document.getElementById('ar1').innerHTML=''; document.getElementById('af1').textContent=''; document.getElementById('aw1').textContent=''; document.querySelectorAll('#s5 ._star').forEach(s=>s.classList.remove('_on')); _na(); }
 
-        function _cfetti(el){
-            const r=el.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height/2, emojis=['🌟','✨','💫','🎉','👏','💚','🍎','🥕'];
-            for(let i=0;i<10;i++){ const p=document.createElement('span'); p.className='_confetti'; p.textContent=emojis[Math.floor(Math.random()*emojis.length)]; p.style.left=(cx+(Math.random()-0.5)*200)+'px'; p.style.top=cy+'px'; p.style.animationDuration=(1.5+Math.random())+'s'; document.body.appendChild(p); setTimeout(()=>{ if(p.parentNode)p.parentNode.removeChild(p); },2500); }
+        function updateStars3() {
+            const starsToLight = Math.min(Math.floor(sylScore / 2), 5);
+            const stars = document.getElementById('stars3').querySelectorAll('.star-icon');
+            stars.forEach(function(star, i) {
+                if (i < starsToLight) star.classList.add('on');
+            });
+            if (starsToLight === 5) {
+                spawnBigConfetti();
+                setTimeout(function() { alert('🎉 Все звёзды собраны!'); }, 500);
+            }
         }
-        function _bigC(){
-            const emojis=['🎆','🎇','🎊','🎉','🌟','✨','💚','🏆','👑','🥇','🍎','🍐','🍊','🥕'];
-            for(let i=0;i<60;i++){ setTimeout(()=>{ const p=document.createElement('span'); p.className='_confetti'; p.textContent=emojis[Math.floor(Math.random()*emojis.length)]; p.style.left=Math.random()*window.innerWidth+'px'; p.style.top='-60px'; p.style.fontSize=(25+Math.random()*40)+'px'; p.style.animationDuration=(2+Math.random()*2.5)+'s'; document.body.appendChild(p); setTimeout(()=>{ if(p.parentNode)p.parentNode.removeChild(p); },4500); }, i*40); }
+
+        function resetGame3() {
+            sylScore = 0;
+            document.getElementById('sylScore').textContent = '0';
+            const stars = document.getElementById('stars3').querySelectorAll('.star-icon');
+            stars.forEach(function(s) { s.classList.remove('on'); });
+            newSyllableTask();
         }
-        document.addEventListener('keydown',e=>{ if(e.code==='Space'&&document.getElementById('t0').classList.contains('_a')){ e.preventDefault(); _sp1(); } });
-        function _init(){ _a1=_p1(); _r1(); _np(); _ns(); _rp(); _na(); }
-        _init();
+
+        // ╔══════════════════════════════════════════════════════╗
+        // ║           ИГРА 4: СВЯЗНАЯ РЕЧЬ                   ║
+        // ╚══════════════════════════════════════════════════════╝
+
+        let storySelected = [];
+        const storyPicsData = [
+            { emoji:'🌳', label:'Дерево' },
+            { emoji:'🍎', label:'Яблоко' },
+            { emoji:'🧺', label:'Корзина' },
+            { emoji:'💧', label:'Вода' },
+            { emoji:'🔪', label:'Нож' },
+            { emoji:'🍽️', label:'Тарелка' },
+            { emoji:'👦', label:'Мальчик' },
+            { emoji:'👧', label:'Девочка' },
+        ];
+
+        function renderStoryPics() {
+            const div = document.getElementById('storyPics');
+            div.innerHTML = '';
+            storyPicsData.forEach(function(pic, i) {
+                const el = document.createElement('div');
+                el.className = 'story-pic';
+                el.innerHTML = '<span style="font-size:55px;">' + pic.emoji + '</span><span class="pic-label">' + pic.label + '</span>';
+                el.onclick = function() {
+                    if (storySelected.length >= 4) return;
+                    if (el.classList.contains('selected-pic')) return;
+                    el.classList.add('selected-pic');
+                    storySelected.push(pic);
+                    updateStorySlots();
+                };
+                div.appendChild(el);
+            });
+        }
+
+        function updateStorySlots() {
+            const slots = document.getElementById('storySeq').querySelectorAll('.story-slot');
+            slots.forEach(function(slot, i) {
+                if (i < storySelected.length) {
+                    slot.textContent = storySelected[i].emoji;
+                    slot.classList.add('filled-slot');
+                } else {
+                    slot.textContent = i + 1;
+                    slot.classList.remove('filled-slot');
+                }
+            });
+        }
+
+        function readStory() {
+            const text = document.getElementById('storyText').value.trim();
+            if (!text) {
+                alert('Напиши рассказ в окошке!');
+                return;
+            }
+            if ('speechSynthesis' in window) {
+                const u = new SpeechSynthesisUtterance(text);
+                u.lang = 'ru-RU';
+                u.rate = 0.8;
+                speechSynthesis.speak(u);
+            } else {
+                alert('Браузер не поддерживает озвучку.');
+            }
+        }
+
+        function resetGame4() {
+            storySelected = [];
+            const pics = document.querySelectorAll('#storyPics .story-pic');
+            pics.forEach(function(p) { p.classList.remove('selected-pic'); });
+            updateStorySlots();
+            document.getElementById('storyText').value = '';
+        }
+
+
+
+        // ╔══════════════════════════════════════════════════════╗
+        // ║      ИГРА 5: ЗВУКОБУКВЕННЫЙ АНАЛИЗ              ║
+        // ╚══════════════════════════════════════════════════════╝
+
+        let analysisScore = 0;
+        let analysisCurrent = null;
+        let analysisFilled = [];
+        let analysisShuffledLetters = [];
+        let analysisWordBuilt = false;
+        let analysisSoundPicks = [];
+
+        const SOUND_TYPES = [
+            { id: 'vowel',           name: 'Гласный',              color: '#f44336', cssClass: 'vowel' },
+            { id: 'consonant-hard',  name: 'Согласный твёрдый',    color: '#2196f3', cssClass: 'consonant-hard' },
+            { id: 'consonant-soft',  name: 'Согласный мягкий',     color: '#4caf50', cssClass: 'consonant-soft' },
+            { id: 'no-sound',        name: 'Не обозначает звука',  color: '#9e9e9e', cssClass: 'no-sound' },
+        ];
+
+        function trueShuffle(arr) {
+            const a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                const temp = a[i]; a[i] = a[j]; a[j] = temp;
+            }
+            return a;
+        }
+
+        function newAnalysisTask() {
+            analysisCurrent = fruitVegData[Math.floor(Math.random() * fruitVegData.length)];
+            analysisFilled = new Array(analysisCurrent.letters.length).fill(null);
+            analysisWordBuilt = false;
+            analysisSoundPicks = new Array(analysisCurrent.letters.length).fill(null);
+
+            document.getElementById('analysisEmoji').textContent = analysisCurrent.emoji;
+            document.getElementById('analysisWord').textContent = '';
+            document.getElementById('analysisFeedback').textContent = '';
+            document.getElementById('analysisResult').innerHTML = '';
+
+            // Слоты
+            const usedLetterCount = {};	    
+            const slotsDiv = document.getElementById('letterSlots');
+            slotsDiv.innerHTML = '';
+            analysisCurrent.letters.forEach(function(letter, i) {
+                const slot = document.createElement('div');
+                slot.className = 'letter-slot';
+                slot.setAttribute('data-slot', i);
+                slot.textContent = '?';
+                slot.style.color = '#bdbdbd';
+                slot.onclick = function() {
+                    if (analysisWordBuilt) return;
+                    if (analysisFilled[i] !== null) {
+                        var letterToReturn = analysisFilled[i];
+                        // Уменьшаем счётчик
+                        if (usedLetterCount[letterToReturn] !== undefined) {
+                            usedLetterCount[letterToReturn]--;
+                        }
+                        analysisFilled[i] = null;
+                        slot.textContent = '?';
+                        slot.style.color = '#bdbdbd';
+                        slot.classList.remove('filled-letter');
+                        // Возвращаем кнопку
+                        var choices = document.getElementById('letterChoices').querySelectorAll('.letter-choice');
+                        for (var c = 0; c < choices.length; c++) {
+                            if (choices[c].textContent === letterToReturn && choices[c].classList.contains('used-letter')) {
+                                choices[c].classList.remove('used-letter');
+                                break;
+                            }
+                        }
+                    }
+                };
+                slotsDiv.appendChild(slot);
+            });
+
+            // Перемешанные буквы
+            analysisShuffledLetters = trueShuffle(analysisCurrent.letters);
+            const choicesDiv = document.getElementById('letterChoices');
+            choicesDiv.innerHTML = '';
+
+            const letterCountMap = {};
+            analysisCurrent.letters.forEach(function(l) {
+                if (!letterCountMap[l]) letterCountMap[l] = 0;
+                letterCountMap[l]++;
+            });
+            for (const key in letterCountMap) { usedLetterCount[key] = 0; }
+
+            analysisShuffledLetters.forEach(function(letter, i) {
+                const btn = document.createElement('div');
+                btn.className = 'letter-choice';
+                btn.textContent = letter;
+                btn.onclick = function() {
+                    if (analysisWordBuilt) return;
+                    if (btn.classList.contains('used-letter')) return;
+                    if (usedLetterCount[letter] >= (letterCountMap[letter] || 0)) return;
+                    const emptySlotIndex = analysisFilled.indexOf(null);
+                    if (emptySlotIndex === -1) return;
+                    analysisFilled[emptySlotIndex] = letter;
+                    usedLetterCount[letter]++;
+                    btn.classList.add('used-letter');
+                    const slots = document.getElementById('letterSlots').querySelectorAll('.letter-slot');
+                    slots[emptySlotIndex].textContent = letter;
+                    slots[emptySlotIndex].style.color = '#2e7d32';
+                    slots[emptySlotIndex].classList.add('filled-letter');
+
+                    if (analysisFilled.indexOf(null) === -1) {
+                        const builtWord = analysisFilled.join('');
+                        if (builtWord === analysisCurrent.word) {
+                            analysisWordBuilt = true;
+                            document.getElementById('analysisWord').textContent = analysisCurrent.word;
+                            document.getElementById('analysisFeedback').textContent = '✅ Слово собрано! Теперь раскрась каждую букву — выбери цвет и нажми на букву.';
+                            renderSoundColoringZone();
+                        } else {
+                            document.getElementById('analysisFeedback').textContent = '❌ Получилось: ' + builtWord + '. Нажми на слоты чтобы убрать буквы и попробуй снова.';
+                        }
+                    }
+                };
+                choicesDiv.appendChild(btn);
+            });
+
+            document.getElementById('analysisResult').innerHTML = '';
+        }
+
+        function renderSoundColoringZone() {
+            const resultDiv = document.getElementById('analysisResult');
+            resultDiv.innerHTML = '';
+
+            let selectedColorId = null;
+
+            // Палитра
+            const palette = document.createElement('div');
+            palette.style.cssText = 'display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;';
+            palette.innerHTML = '<p style="width:100%;color:#888;margin-bottom:5px;">Выбери цвет, потом нажми на букву:</p>';
+
+            SOUND_TYPES.forEach(function(st) {
+                const colorBtn = document.createElement('div');
+                colorBtn.className = 'sound-chip ' + st.cssClass;
+                colorBtn.textContent = st.name;
+                colorBtn.style.cssText = 'cursor:pointer;padding:10px 18px;font-size:14px;border-radius:20px;font-weight:bold;transition:all 0.2s;user-select:none;';
+                colorBtn.setAttribute('data-sound-id', st.id);
+                colorBtn.onclick = function() {
+                    selectedColorId = st.id;
+                    palette.querySelectorAll('.sound-chip').forEach(function(b) {
+                        b.style.outline = 'none'; b.style.transform = 'scale(1)';
+                    });
+                    colorBtn.style.outline = '3px solid #000';
+                    colorBtn.style.transform = 'scale(1.08)';
+                    document.getElementById('analysisFeedback').textContent = 'Выбран: «' + st.name + '». Нажимай на буквы чтобы раскрасить.';
+                };
+                palette.appendChild(colorBtn);
+            });
+            resultDiv.appendChild(palette);
+
+            // Буквы для раскраски
+            const lettersRow = document.createElement('div');
+            lettersRow.style.cssText = 'display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:15px 0;';
+
+            analysisCurrent.letters.forEach(function(letter, i) {
+                const letterBox = document.createElement('div');
+                letterBox.textContent = letter;
+                letterBox.style.cssText = 'width:60px;height:60px;border-radius:15px;border:3px dashed #bdbdbd;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:bold;background:white;cursor:pointer;transition:all 0.3s;';
+                letterBox.setAttribute('data-letter-index', i);
+
+                if (analysisSoundPicks[i] !== null) {
+                    const picked = SOUND_TYPES.find(function(s) { return s.id === analysisSoundPicks[i]; });
+                    if (picked) {
+                        letterBox.style.background = picked.color;
+                        letterBox.style.color = 'white';
+                        letterBox.style.borderColor = picked.color;
+                        letterBox.style.borderStyle = 'solid';
+                    }
+                }
+
+                letterBox.onclick = function() {
+                    if (selectedColorId === null) {
+                        document.getElementById('analysisFeedback').textContent = 'Сначала выбери цвет сверху!';
+                        return;
+                    }
+                    analysisSoundPicks[i] = selectedColorId;
+                    const picked = SOUND_TYPES.find(function(s) { return s.id === selectedColorId; });
+                    letterBox.style.background = picked.color;
+                    letterBox.style.color = 'white';
+                    letterBox.style.borderColor = picked.color;
+                    letterBox.style.borderStyle = 'solid';
+                    letterBox.style.transform = 'scale(1.1)';
+                    setTimeout(function() { letterBox.style.transform = 'scale(1)'; }, 200);
+                    document.getElementById('analysisFeedback').textContent = 'Буква «' + letter + '» раскрашена. Раскрась все буквы и нажми «Проверить».';
+                    checkAllColored();
+                };
+                lettersRow.appendChild(letterBox);
+            });
+            resultDiv.appendChild(lettersRow);
+
+            // Кнопка проверки
+            const checkBtn = document.createElement('button');
+            checkBtn.textContent = '✅ Проверить раскраску';
+            checkBtn.className = 'btn btn-green';
+            checkBtn.style.marginTop = '15px';
+            checkBtn.onclick = function() { checkColoringResult(); };
+            resultDiv.appendChild(checkBtn);
+
+            if (analysisSoundPicks.indexOf(null) === -1) {
+                checkColoringResult();
+            }
+        }
+
+        function checkAllColored() {
+            if (analysisSoundPicks.indexOf(null) === -1) {
+                document.getElementById('analysisFeedback').textContent = 'Все буквы раскрашены! Нажми «Проверить раскраску».';
+            }
+        }
+
+        function checkColoringResult() {
+            let allCorrect = true;
+            const resultDetails = [];
+
+            analysisCurrent.letters.forEach(function(letter, i) {
+                const correctSound = analysisCurrent.sounds[i];
+                const pickedId = analysisSoundPicks[i];
+
+                let correctId;
+                if (correctSound === 'гласный') correctId = 'vowel';
+                else if (correctSound === 'согласный-твёрдый') correctId = 'consonant-hard';
+                else if (correctSound === 'согласный-мягкий') correctId = 'consonant-soft';
+                else if (correctSound === 'мягкий-знак' || correctSound === 'твёрдый-знак') correctId = 'no-sound';
+                else correctId = 'vowel';
+
+                const isCorrect = (pickedId === correctId);
+                if (!isCorrect) allCorrect = false;
+
+                const pickedName = SOUND_TYPES.find(function(s) { return s.id === pickedId; });
+                resultDetails.push({
+                    letter: letter,
+                    picked: pickedName ? pickedName.name : 'не выбрано',
+                    correct: correctSound,
+                    isCorrect: isCorrect,
+                });
+            });
+
+            const resultDiv = document.getElementById('analysisResult');
+            resultDiv.querySelectorAll('.coloring-summary').forEach(function(el) { el.remove(); });
+
+            if (allCorrect) {
+                analysisScore++;
+                document.getElementById('analysisScore').textContent = analysisScore;
+                updateStars5();
+                spawnConfetti(resultDiv);
+                document.getElementById('analysisFeedback').textContent = '🎉 Всё верно! Нажми «Следующее слово».';
+                const summary = document.createElement('div');
+                summary.className = 'coloring-summary';
+                summary.style.cssText = 'margin-top:15px;padding:10px;background:#e8f5e9;border-radius:15px;';
+                summary.innerHTML = '<strong>✅ Правильно:</strong><br>' + resultDetails.map(function(d) { return '«' + d.letter + '» = ' + d.correct; }).join(' | ');
+                resultDiv.appendChild(summary);
+            } else {
+                document.getElementById('analysisFeedback').textContent = '❌ Есть ошибки! Смотри подсказку и исправляй.';
+                const summary = document.createElement('div');
+                summary.className = 'coloring-summary';
+                summary.style.cssText = 'margin-top:15px;padding:10px;background:#ffebee;border-radius:15px;';
+                summary.innerHTML = '<strong>❌ Ошибки:</strong><br>' + resultDetails.filter(function(d) { return !d.isCorrect; }).map(function(d) { return '«' + d.letter + '» — выбрано «' + d.picked + '», нужно «' + d.correct + '»'; }).join('<br>');
+                resultDiv.appendChild(summary);
+            }
+        }
+
+        function updateStars5() {
+            const starsToLight = Math.min(Math.floor(analysisScore / 2), 5);
+            const stars = document.getElementById('stars5').querySelectorAll('.star-icon');
+            stars.forEach(function(star, i) { if (i < starsToLight) star.classList.add('on'); });
+            if (starsToLight === 5) {
+                spawnBigConfetti();
+                setTimeout(function() { alert('🎉 Все звёзды собраны!'); }, 500);
+            }
+        }
+
+        function resetGame5() {
+            analysisScore = 0;
+            analysisWordBuilt = false;
+            analysisSoundPicks = [];
+            document.getElementById('analysisScore').textContent = '0';
+            document.getElementById('analysisResult').innerHTML = '';
+            document.getElementById('analysisFeedback').textContent = '';
+            document.getElementById('analysisWord').textContent = '';
+            const stars = document.getElementById('stars5').querySelectorAll('.star-icon');
+            stars.forEach(function(s) { s.classList.remove('on'); });
+            newAnalysisTask();
+        }
+
+
+
+        // ╔══════════════════════════════════════════════════════╗
+        // ║           ИГРА 6: КЛАССИФИКАЦИЯ                   ║
+        // ╚══════════════════════════════════════════════════════╝
+
+        let classScore = 0;
+        let classTotal = 0;
+        let classCurrentTask = '';
+        let classSelected = null;
+        let classItems = [];
+
+        const classData = [
+            {emoji:'🍎',name:'Яблоко',cat:'fruit'},{emoji:'🍐',name:'Груша',cat:'fruit'},
+            {emoji:'🍌',name:'Банан',cat:'fruit'},{emoji:'🍊',name:'Апельсин',cat:'fruit'},
+            {emoji:'🍇',name:'Виноград',cat:'berry'},{emoji:'🍒',name:'Вишня',cat:'berry'},
+            {emoji:'🍓',name:'Клубника',cat:'berry'},{emoji:'🍑',name:'Персик',cat:'fruit'},
+            {emoji:'🥕',name:'Морковь',cat:'veg'},{emoji:'🥒',name:'Огурец',cat:'veg'},
+            {emoji:'🍅',name:'Помидор',cat:'veg'},{emoji:'🧅',name:'Лук',cat:'veg'},
+            {emoji:'🥔',name:'Картофель',cat:'veg'},{emoji:'🍆',name:'Баклажан',cat:'veg'},
+            {emoji:'🌽',name:'Кукуруза',cat:'veg'},{emoji:'🍉',name:'Арбуз',cat:'berry'},
+            {emoji:'🍋',name:'Лимон',cat:'fruit'},{emoji:'🍍',name:'Ананас',cat:'fruit'},
+        ];
+
+        const classTasks = [
+            {id:'fruit', name:'ФРУКТЫ', basket:'🧺', cat:'fruit'},
+            {id:'veg',   name:'ОВОЩИ',  basket:'🥬', cat:'veg'},
+            {id:'berry', name:'ЯГОДЫ',  basket:'🍓', cat:'berry'},
+        ];
+
+        function newClassTask() {
+            classSelected = null;
+            const task = classTasks[Math.floor(Math.random() * classTasks.length)];
+            classCurrentTask = task.cat;
+            document.getElementById('classTask').innerHTML = 'Выбери все <b>' + task.name + '</b> и нажми на корзину ' + task.basket;
+            document.getElementById('classFeedback').textContent = '';
+            const div = document.getElementById('classItems');
+            div.innerHTML = '';
+            let pool = classData.slice().sort(function() { return Math.random() - 0.5; }).slice(0, 8);
+            const hasCorrect = pool.filter(function(x) { return x.cat === classCurrentTask; });
+            if (hasCorrect.length === 0) {
+                const correctAll = classData.filter(function(x) { return x.cat === classCurrentTask; });
+                pool[0] = correctAll[Math.floor(Math.random() * correctAll.length)];
+            }
+            classItems = pool;
+            pool.forEach(function(item, i) {
+                const el = document.createElement('div');
+                el.style.cssText = 'width:80px;height:80px;border-radius:15px;border:3px solid #e0e0e0;display:flex;align-items:center;justify-content:center;font-size:40px;cursor:pointer;background:white;transition:all 0.3s;';
+                el.textContent = item.emoji;
+                el.title = item.name;
+                el.onclick = function() {
+                    if (classSelected === i) {
+                        classSelected = null;
+                        el.style.border = '3px solid #e0e0e0';
+                        el.style.background = 'white';
+                    } else {
+                        if (classSelected !== null) {
+                            const old = document.getElementById('classItems').children[classSelected];
+                            old.style.border = '3px solid #e0e0e0';
+                            old.style.background = 'white';
+                        }
+                        classSelected = i;
+                        el.style.border = '3px solid #ff9800';
+                        el.style.background = '#fff8e1';
+                    }
+                };
+                div.appendChild(el);
+            });
+        }
+
+        function checkClass(basket) {
+            if (classSelected === null) {
+                document.getElementById('classFeedback').textContent = 'Сначала выбери картинку!';
+                return;
+            }
+            classTotal++;
+            document.getElementById('classTotal').textContent = classTotal;
+            const item = classItems[classSelected];
+            if (item.cat === classCurrentTask && basket === classCurrentTask) {
+                classScore++;
+                document.getElementById('classScore').textContent = classScore;
+                var catName = classCurrentTask === 'fruit' ? 'фрукт' : classCurrentTask === 'veg' ? 'овощ' : 'ягода';
+		document.getElementById('classFeedback').textContent = '✅ Правильно! ' + item.name + ' — это ' + catName + '!';
+                const el = document.getElementById('classItems').children[classSelected];
+                el.style.opacity = '0.3';
+                el.style.pointerEvents = 'none';
+                classSelected = null;
+                updateStars6();
+                let allDone = true;
+                classItems.forEach(function(it, idx) {
+                    if (it.cat === classCurrentTask) {
+                        if (document.getElementById('classItems').children[idx].style.opacity !== '0.3') {
+                            allDone = false;
+                        }
+                    }
+                });
+                if (allDone) {
+                    document.getElementById('classFeedback').textContent = '🎉 Все правильные картинки выбраны! Нажми «Новое задание».';
+                    spawnConfetti(document.getElementById('classFeedback'));
+                }
+            } else {
+                document.getElementById('classFeedback').textContent = '❌ Неправильно! ' + item.name + ' не подходит. Попробуй другую картинку.';
+            }
+        }
+
+        function updateStars6() {
+            const n = Math.min(Math.floor(classScore / 2), 5);
+            const s = document.getElementById('stars6').querySelectorAll('.star-icon');
+            s.forEach(function(st, i) { if (i < n) st.classList.add('on'); });
+            if (n === 5) { spawnBigConfetti(); setTimeout(function() { alert('🎉 Все звёзды собраны!'); }, 500); }
+        }
+
+        function resetGame6() {
+            classScore = 0;
+            classTotal = 0;
+            classSelected = null;
+            document.getElementById('classScore').textContent = '0';
+            document.getElementById('classTotal').textContent = '0';
+            document.getElementById('classFeedback').textContent = '';
+            document.getElementById('stars6').querySelectorAll('.star-icon').forEach(function(s) { s.classList.remove('on'); });
+            newClassTask();
+        }
+
+
+
+        // ╔══════════════════════════════════════════════════════╗
+        // ║              КОНФЕТТИ И ЭФФЕКТЫ                  ║
+        // ╚══════════════════════════════════════════════════════╝
+
+        function spawnConfetti(element) {
+            const rect = element.getBoundingClientRect();
+            const cx = rect.left + rect.width / 2;
+            const cy = rect.top + rect.height / 2;
+            const emojis = ['🌟','✨','💫','🎉','👏','💚','🍎','🥕'];
+            for (let i = 0; i < 10; i++) {
+                const p = document.createElement('span');
+                p.className = 'confetti-particle';
+                p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                p.style.left = (cx + (Math.random() - 0.5) * 200) + 'px';
+                p.style.top = cy + 'px';
+                p.style.animationDuration = (1.5 + Math.random()) + 's';
+                document.body.appendChild(p);
+                setTimeout(function() { if (p.parentNode) p.parentNode.removeChild(p); }, 2500);
+            }
+        }
+
+        function spawnBigConfetti() {
+            const emojis = ['🎆','🎇','🎊','🎉','🌟','✨','💚','🏆','👑','🥇','🍎','🍐','🍊','🥕'];
+            for (let i = 0; i < 60; i++) {
+                setTimeout(function() {
+                    const p = document.createElement('span');
+                    p.className = 'confetti-particle';
+                    p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    p.style.left = Math.random() * window.innerWidth + 'px';
+                    p.style.top = '-60px';
+                    p.style.fontSize = (25 + Math.random() * 40) + 'px';
+                    p.style.animationDuration = (2 + Math.random() * 2.5) + 's';
+                    document.body.appendChild(p);
+                    setTimeout(function() { if (p.parentNode) p.parentNode.removeChild(p); }, 4500);
+                }, i * 40);
+            }
+        }
+
+        // Клавиша Пробел для озвучки в игре 1
+        document.addEventListener('keydown', function(e) {
+            if (e.code === 'Space' && document.getElementById('tab0').classList.contains('active')) {
+                e.preventDefault();
+                speakCard1();
+            }
+        });
+
+        // ╔══════════════════════════════════════════════════════╗
+        // ║                 ЗАПУСК ВСЕХ ИГР                   ║
+        // ╚══════════════════════════════════════════════════════╝
+
+        function initAll() {
+            game1Cards = pickCards1();
+            renderCards1();
+            newPositionTask();
+            newSyllableTask();
+            renderStoryPics();
+            newAnalysisTask();
+	    newClassTask();
+        }
+
+        initAll();
+
         console.log('✅ Логопедический комплекс "Овощи и Фрукты" загружен!');
+        console.log('📋 Слов в базе: ' + fruitVegData.length);
+        console.log('🎮 5 игр готовы к работе.');
     </script>
+
 </body>
 </html>
